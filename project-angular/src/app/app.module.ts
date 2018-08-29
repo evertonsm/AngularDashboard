@@ -15,8 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
-
 import { Station1Service } from './pages/garden/station1/station1.service';
+
+import { AuthGuard } from './auth-guard.service'
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { Station1Service } from './pages/garden/station1/station1.service';
     ToasterModule.forRoot()
   ],
   bootstrap: [AppComponent],
-  providers: [Station1Service,
+  providers: [AuthGuard,Station1Service,
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
 })

@@ -93,8 +93,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
             this.humidity = this.humidity/x;
             x = 0;
           }
-          console.log(this.humidity);
-
+          
           if(st!= 4) this.stationSelected(this.humidity, 0)
 
           else this.stationSelected(this.humidity, 1)

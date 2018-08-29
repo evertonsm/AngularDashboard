@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
+import { AuthGuard} from '../auth-guard.service'
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
@@ -8,6 +8,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
+  canActivate: [AuthGuard],
   children: [{
     path: 'dashboard',
     component: DashboardComponent,

@@ -9,6 +9,7 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 
+
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
   {
