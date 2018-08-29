@@ -28,10 +28,26 @@
     display: block;
   }
 
+ 
   .header-container {
     display: flex;
     align-items: center;
     width: auto;
+    
+    .inatel-logo{
+      img{
+        position: relative;
+        width: 25%;
+        left: 70%;
+        z-index: 0;
+        overflow: hidden;
+      }
+      
+      img:hover{
+        opacity: 0.5;
+    
+      }    
+    }
 
     .navigation {
       @include nb-ltr(padding-right, nb-theme(padding));

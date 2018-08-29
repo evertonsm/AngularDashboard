@@ -22,7 +22,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Station #2',
-        link: '/pages/ui-features/grid',
+        link: '/pages/garden/station1',
       },
       {
         title: 'Station #3',

@@ -7,6 +7,7 @@ import { MENU_ITEMS } from './pages-menu';
   template: `
     <ngx-sample-layout>
       <nb-menu [items]="menu"></nb-menu>
+      <img src="../../../assets/logos/inatel.jpg" alt="Logo">
       <router-outlet></router-outlet>
     </ngx-sample-layout>
   `,

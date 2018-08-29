@@ -23,6 +23,7 @@ import { ChartjsBarHorizontalComponent} from './rooms/chart/chartjs-bar-horizont
 
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
+import { AnunciosComponent } from './anuncios/anuncios.component';
 
 
 @NgModule({
@@ -52,6 +53,8 @@ import { TrafficChartComponent } from './traffic/traffic-chart.component';
     TrafficChartComponent,
 
     ChartjsBarHorizontalComponent,
+
+    AnunciosComponent,
 
   ],
 })

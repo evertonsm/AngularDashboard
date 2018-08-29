@@ -5,10 +5,14 @@ const express = require ( 'express' );
 const bodyparser = require ('body-parser');
 const cors = require ('cors');
 const { mongoose } = require('./db.js');
-var sensorsController = require('./controllers/sensorsController.js');
+const {udp} = require('./udp.js');
+
+
 var triggerController = require('./controllers/triggerController.js');
 var stationController = require('./controllers/stationController.js');
 var videoController = require('./controllers/videoController.js')
+var userController = require('./controllers/userController.js')
+
 
 const app = express ();
 const port = 8000
@@ -21,15 +25,18 @@ app.use(function(req, res, next) {
 
 
 //body - parser
+//app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
+
 
 // listen (start app with node server.js)
 app.listen ( port , () => { 
-  console .log ( 'Servidor em: http://localhost:'+port);
+  console .log ( 'Servidor HTTP em: http://localhost: '+port);
   console .log ( 'Para fechar: Ctrl + c' ); 
 });
 
-app.use('/sensors', sensorsController);
+app.use('/user', userController);  
 app.use('/trigger', triggerController);
 app.use('/stations', stationController);
 app.use('/video', videoController);

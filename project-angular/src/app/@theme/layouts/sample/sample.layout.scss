@@ -7,6 +7,23 @@
     flex: 0.15 !important;
   }
 
+  img {
+
+    height: 18%;
+    max-height: 6.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50%;
+    right: 25px;
+    transition: width 0.3s ease;
+    //filter: opacity(90%);
+
+  }
+  .inatel-crr img:hover{
+    opacity: 0.7;
+
+  }
+
   nb-sidebar.settings-sidebar {
     $sidebar-width: 7.5rem;
 

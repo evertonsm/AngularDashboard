@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTToken, NbPasswordAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -38,17 +38,93 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        token: {
+          class: NbAuthJWTToken,
+          key: 'token',
+        },
+        baseEndpoint: 'http://localhost:8000/user',
+        login: {
+            endpoint: '/login',
+            method: 'post'
+        },
+        register: {
+          endpoint: '/register',
+          method: 'post'
+        },
+        logout: {
+          endpoint: '/logout',
+          method: 'get'
+        },
+        requestPass: {
+          endpoint: '/auth/request-pass',
+          method: 'post'
+        },
+        resetPass: {
+          endpoint: '/auth/reset-pass',
+          method: 'post'
+        },
+        //delay: 3000,
       }),
     ],
     forms: {
       login: {
-        socialLinks: socialLinks,
+        redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
+        strategy: 'email',  // strategy id key.
+        rememberMe: true,   // whether to show or not the `rememberMe` checkbox
+        showMessages: {     // show/not show success/error messages
+          success: true,
+          error: true,
+        },
+        socialLinks: socialLinks, // social links at the bottom of a page
       },
       register: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        terms: true,
         socialLinks: socialLinks,
+      },
+      requestPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        socialLinks: socialLinks,
+      },
+      resetPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        socialLinks: socialLinks,
+      },
+      logout: {
+        redirectDelay: 500,
+        strategy: 'email',
+      },
+      validation: {
+        password: {
+          required: true,
+          minLength: 4,
+          maxLength: 50,
+        },
+        email: {
+          required: true,
+        },
+        fullName: {
+          required: false,
+          minLength: 4,
+          maxLength: 50,
+        },
       },
     },
   }).providers,

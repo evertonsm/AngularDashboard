@@ -31,6 +31,11 @@ import { StateService } from '../../../@core/data/state.service';
           </a>
         </nb-sidebar-header>
         <ng-content select="nb-menu"></ng-content>
+        <div class="inatel-crr">
+        <a href="https://www.inatel.br/crr/">
+          <img src="../../assets/logos/crr.jpg" alt="CRR">
+        </a>
+        </div>
       </nb-sidebar>
 
       <nb-layout-column class="main-content">
