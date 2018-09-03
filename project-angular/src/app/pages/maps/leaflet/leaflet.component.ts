@@ -8,7 +8,7 @@ import 'style-loader!leaflet/dist/leaflet.css';
   styleUrls: ['./leaflet.component.scss'],
   template: `
     <nb-card>
-      <nb-card-header>Leaflet Maps</nb-card-header>
+      <nb-card-header>Mapa</nb-card-header>
       <nb-card-body>
         <div leaflet [leafletOptions]="options"></div>
       </nb-card-body>
@@ -23,10 +23,12 @@ export class LeafletComponent {
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 22, attribution: '...' }),
       //L.marker([-22.2573777, -45.6961486]).bindPopup('Inatel').openPopup(),
       L.circle([ -22.2570273, -45.6960272 ], { radius: 120 }),
-      L.circle([ -22.1980059, -45.7430668 ], { radius: 120 }),   
+      L.circle([ -22.1980059, -45.7430668 ], { radius: 120 }),
+      L.circle([ -22.20897, -45.67094 ], { radius: 120 }),
+      L.polygon([[ -22.20897, -45.67094 ], [ -22.1980059, -45.7430668 ], [ -22.2570273, -45.6960272 ]])  
         
     ],
-    zoom: 14,
+    zoom: 12,
     center: L.latLng({ lat: -22.2573777, lng: -45.6961486 }),
   };
 

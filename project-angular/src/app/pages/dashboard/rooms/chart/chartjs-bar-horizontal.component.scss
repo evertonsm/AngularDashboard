@@ -29,6 +29,7 @@
 
   @include media-breakpoint-down(sm) {
     height: 50%;
+    
     border-top:
       nb-theme(card-border-width)
       nb-theme(card-header-border-type)

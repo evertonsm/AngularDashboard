@@ -8,6 +8,11 @@
     border: none;
   }
 
+  video {
+    width: 100%;
+    height: auto;
+  }
+  
   nb-card-body {
     padding: 0;
     position: relative;
@@ -66,9 +71,10 @@
 
   .cameras.single-view {
     .camera {
+             
       height: 100%;
       width: 100%;
-
+      
       &::before {
         height: 100%;
       }

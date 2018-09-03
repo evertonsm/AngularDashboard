@@ -45,19 +45,24 @@ export class RoomsComponent implements OnDestroy {
     } else {
       this.collapse();
     }
-    if(roomNumber == 0){
-      this.stationName = 'Station #1';
-    }else{
-        if(roomNumber <4){
-          this.stationName = 'Station #' + +roomNumber;
-        }else{
-          this.stationName = 'Reservoir';
-        }
 
+    if(roomNumber == 1){
+      this.stationName = 'Alface';
     }
+    else{
+      if(roomNumber == 2){
+        this.stationName = 'Couve';
+      }
+      else{
+        if(roomNumber == 3){
+          this.stationName = 'Cenoura';
+        }    
     
-    
-    
+        else{
+          this.stationName = 'Reservatório';
+        }
+      }
+    }   
     this.selected = roomNumber;
   }
 

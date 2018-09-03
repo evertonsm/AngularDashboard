@@ -1,7 +1,7 @@
 <nb-card size="large">
   <nb-card-header>
     <div class="cameras-card-header">
-      <span class="cameras-card-title">Security Cameras</span>
+      <span class="cameras-card-title">Câmera de Segurança</span>
       <span class="cameras-filter">
         <a [class.active]="isSingleView" (click)="isSingleView = true">
           <i class="nb-square"></i>
@@ -18,8 +18,8 @@
         <span>{{ selectedCamera.title }}</span>
       </div>-->
       
-      <video id="videoPlayer" controls>
-        <source src="http://localhost:8000/video" type='video/webm' />      
+      <video id="videoPlayer" controls autoplay>
+        <source src="http://192.168.1.239:8080/camera.ogg" type="video/ogg" />      
       </video>
     </div>
     <div class="cameras" *ngIf="!isSingleView">

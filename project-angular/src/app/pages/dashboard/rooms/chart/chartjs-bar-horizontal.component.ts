@@ -8,7 +8,7 @@ import { Station} from '../../../garden/station1/station.model'
   styleUrls: ['./chartjs-bar-horizontal.component.scss'],
   template: `
     <div class="header">
-      <span class="title">Selected Station</span>
+      <span class="title">Canteiro Selecionado: </span>
         <h3>{{stationName}}</h3>
     </div>
     <chart type="horizontalBar" [data]="data" [options]="options"></chart>
@@ -74,11 +74,12 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
 
   getValuesStation(station: string){
     var st;
-
-    if(this.stationName == "Station #1") st = "1";
-    if(this.stationName == "Station #2") st = "2";
-    if(this.stationName == "Station #3") st = "3";
-    if(this.stationName == "Reservoir") st = "4";
+    console.log(station)
+    
+    if(this.stationName == "Alface") st = "1";
+    if(this.stationName == "Couve") st = "2";
+    if(this.stationName == "Cenoura") st = "3";
+    if(this.stationName == "Reservatório") st = "4";
         
     this.station1Service.getStation(st).subscribe((res)=>{
           
@@ -107,9 +108,9 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
   stationSelected(humidity, tp){
     if(tp == 0){
       this.data = {
-        labels: ['Humidity'],
+        labels: ['Umidade'],
         datasets: [{
-            label: 'Average',
+            label: 'Média',
             
             backgroundColor: "#00f9a6",
             //backgroundColor: colors.infoLight,
@@ -123,7 +124,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
     else{
 
       this.data = {
-        labels: ['Capacity'],
+        labels: ['Capacidade'],
         datasets: [{
             label: 'Max',
             backgroundColor: "#00f9a6",
