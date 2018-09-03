@@ -1,9 +1,30 @@
 const express = require('express');
 const fs = require('fs');
-
 var router = express.Router();
 
 
+
+Stream = require('node-rtsp-stream');
+stream = new Stream({
+    name: 'camera1',
+    streamUrl: 'rtsp://admin:gandalf@192.168.1.195:8554/profile0:camera1.mov',
+    wsPort: 9999
+});
+
+
+
+/*
+const Stream = require('./node-rtsp-stream');
+const streamUrl = process.env.FOSCAM_STREAM_URL;
+stream = new Stream({
+  name: 'camera1',
+  streamUrl: 'rtsp://admin:gandalf@192.168.1.195:8554/profile0',
+  wsPort: 9999,
+  width: 1280,
+  height: 720
+});*/
+
+/*
 router.get('/', function(req, res) {
     const path = './camera1.ogg'
     const stat = fs.statSync(path)
@@ -34,6 +55,8 @@ router.get('/', function(req, res) {
       fs.createReadStream(path).pipe(res)
     }
   });
+*/
+
 
 
 

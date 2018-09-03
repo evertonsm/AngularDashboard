@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  //background-color: rgba(255,255,255,1);
 
   .left {
     display: flex;
@@ -36,11 +37,11 @@
     
     .inatel-logo{
       img{
-        position: relative;
-        width: 25%;
-        left: 70%;
-        z-index: 0;
-        overflow: hidden;
+        display: inline-block;
+        max-width: 170px;
+        width: 100%;
+        left: 1.5rem;
+             
       }
       
       img:hover{

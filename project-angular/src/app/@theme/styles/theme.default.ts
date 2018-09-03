@@ -4,13 +4,30 @@ export const DEFAULT_THEME = {
   variables: {
 
     // Safari fix
+    /*temperature: [
+      '#42db7d',
+      '#42db7d',
+      '#42db7d',
+      '#42db7d',
+      '#42db7d',
+    ],*/
+    /*
     temperature: [
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
+      '#2ec7fe',
+      '#31ffad',
+      '#7bff24',
+      '#fff024',
+      '#f7bd59',
+    ],*/
+
+    temperature: [
+      '#f7bd59',
+      '#fff024',
+      '#7bff24',
+      '#31ffad',
+      '#2ec7fe',
     ],
+
 
     solar: {
       gradientLeft: '#42db7d',

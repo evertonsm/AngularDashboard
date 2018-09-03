@@ -29,4 +29,5 @@ export class SecurityCamerasComponent {
     this.selectedCamera = camera;
     this.isSingleView = true;
   }
+
 }

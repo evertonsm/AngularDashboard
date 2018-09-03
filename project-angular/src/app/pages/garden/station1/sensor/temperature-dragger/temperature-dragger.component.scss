@@ -20,8 +20,10 @@
   }
 
   .circle {
-    fill: nb-theme(color-bg);
-    stroke: nb-theme(color-success);
+    //fill: nb-theme(color-bg);
+    //stroke: nb-theme(color-success);
+    fill: white;
+    stroke: white;
   }
 
   .temperature-bg {

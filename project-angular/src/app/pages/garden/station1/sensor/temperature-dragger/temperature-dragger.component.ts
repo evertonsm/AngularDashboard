@@ -13,7 +13,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   @ViewChild('svgRoot') svgRoot: ElementRef;
 
-  @Input() fillColors: string|string[] = '#2ec6ff';
+  @Input() fillColors: string|string[] = '#ffffff';
   @Input() disableArcColor = '#999999';
   @Input() bottomAngle = 90;
   @Input() arcThickness = 18; // CSS pixels

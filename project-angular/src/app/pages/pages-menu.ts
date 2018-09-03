@@ -1,4 +1,5 @@
 import { NbMenuItem } from '@nebular/theme';
+import { icon } from 'leaflet';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   /*{
@@ -8,24 +9,24 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },*/
   {
-    title: 'INFORMATIONS',
+    title: 'OPÇÕES',
     group: true,
   },
   {
-    title: 'Garden',
+    title: 'Plantação',
     icon: 'nb-sunny',
     link: '/pages/garden',
     children: [
       {
-        title: 'Station #1',
+        title: 'Canteiro #1',
         link: '/pages/garden/station1',
       },
       {
-        title: 'Station #2',
-        link: '/pages/garden/station1',
+        title: 'Canteiro #2',
+        link: '#',
       },
       {
-        title: 'Station #3',
+        title: 'Canteiro #3',
         link: '/pages/ui-features/icons',
       },
       /*
@@ -52,6 +53,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       */
     ],
   },
+  /*
   {
     title: 'Graph',
     icon: 'nb-compose',
@@ -65,7 +67,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/forms/layouts',
       },
     ],
-  },/*
+  },*//*
   {
     title: 'Components',
     icon: 'nb-gear',
@@ -80,13 +82,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },*/
   {
-    title: 'Maps',
+    title: 'Mapa',
     icon: 'nb-location',
+    link: '/pages/maps/leaflet',/*
     children: [
       {
         title: 'Search Maps',
         link: '/pages/maps/leaflet',
-      },/*
+      },*//*
       {
         title: 'Google Maps',
         link: '/pages/maps/gmaps',
@@ -102,8 +105,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Search Maps',
         link: '/pages/maps/searchmap',
-      },*/
-    ],
+      },
+    ],*/
   },
   /*
   {
@@ -158,7 +161,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/miscellaneous/404',
       },
     ],
-  },*/
+  },*//*
   {
     title: 'Auth',
     icon: 'nb-locked',
@@ -180,5 +183,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
+  },*/
+  {
+    title: "Cultivo",
+    icon: "nb-partlysunny"
   },
+  {
+    title: "Projeto",
+    icon: "nb-paper-plane"
+  },
+  {
+    title: "Contate-nos",
+    icon: "nb-email"
+  }
 ];

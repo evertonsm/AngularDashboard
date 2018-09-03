@@ -1,6 +1,6 @@
 
-<toaster-container [toasterconfig]="config"></toaster-container>
 
+<toaster-container [toasterconfig]="config"></toaster-container>
 <div class="row">
   <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
     <ngx-status-card [title]="statusCard.title"
@@ -12,11 +12,12 @@
   </div>
 </div>
 
-
+<div class="station">
   <div *ngFor="let station of stations">
     <div class="row">
-      <div *ngFor="let humidity of station.humidity" class=".col-md-1">
+      <div *ngFor="let humidity of station.humidity" class=".col-6 .col-sm-3">
           <ngx-temperature-0 [sensor]= "humidity" ></ngx-temperature-0>
       </div>
     </div>
   </div>
+</div>

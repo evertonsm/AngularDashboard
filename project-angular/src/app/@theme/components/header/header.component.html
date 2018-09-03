@@ -1,8 +1,10 @@
 <div class="header-container">
   <div class="logo-containter">
     <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-    <div class="logo" (click)="goToHome()">Smart Garden Application<span></span></div>
-   </div>
+    <a href="#">
+      <div class="logo" (click)="goToHome()">Horta Inteligente <span></span></div>
+    </a>
+  </div>
  
   <!--<ngx-theme-switcher></ngx-theme-switcher>-->
 </div>
@@ -10,15 +12,18 @@
 <div class="header-container">
   <div class="inatel-logo">
     <a href="https://inatel.br/home/">
-      <img src="../../../../assets/logos/inatel.jpg" alt="Logo">
+      <img src="../../../../assets/logos/inatel.jpg" alt="inatel">
     </a>
     </div>
   <nb-actions size="medium" >
     <nb-action *nbIsGranted="['view', 'user']" >
-      <nb-user [nbContextMenu]="userMenu" [name]="user?.name" [picture]="user?.picture"></nb-user>
+      <!--<nb-user [nbContextMenu]="userMenu" [name]="user?.name" [picture]="user?.picture"></nb-user>-->
+      <nb-user [nbContextMenu]="userMenu" size="large" [name]="users?.name" nbContextMenuTag="context-logout"></nb-user>
     </nb-action>
+    <!--
     <nb-action class="control-item">
       <nb-search type="column-curtain" (click)="startSearch()"></nb-search>
     </nb-action>
+    -->
   </nb-actions>
 </div>
