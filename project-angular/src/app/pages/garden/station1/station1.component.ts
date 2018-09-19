@@ -29,13 +29,13 @@ export class Station1Component implements OnDestroy, OnInit{
   stations: Station[];
   
   waterCard: CardSettings = {
-    title: 'Water the garden',
+    title: 'Acionar água no jardim',
     iconClass: 'nb-rainy',
     type: 'info',
     on : false,
   };
    reloadCard: CardSettings = {
-    title: 'Reload informations',
+    title: 'Atualizar informações',
     iconClass: 'ion-refresh',
     type: 'success',
     on : true,
