@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ToasterConfig, ToasterService, Toast, BodyOutputType, ToasterModule, ToasterContainerComponent } from 'angular2-toaster';
-import { takeWhile } from 'rxjs/operators/takeWhile' ;
-import { NbThemeService } from '@nebular/theme';
+import { Component, OnDestroy, OnInit } from '../../../../../node_modules/@angular/core';
+import { ToasterConfig, ToasterService, Toast, BodyOutputType, ToasterModule, ToasterContainerComponent } from '../../../../../node_modules/angular2-toaster/angular2-toaster';
+import { takeWhile } from '../../../../../node_modules/rxjs/operators/takeWhile' ;
+import { NbThemeService } from '../../../../../node_modules/@nebular/theme';
 import { Station1Service} from './station1.service'
 import { Station} from './station.model'
 
@@ -30,21 +30,16 @@ export class Station1Component implements OnDestroy, OnInit{
   irrigation = true;
   
   waterCard: CardSettings = {
-<<<<<<< HEAD
     title: 'Acionar Irrigação',
-=======
-    title: 'Acionar água no jardim',
->>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
+
     iconClass: 'nb-rainy',
     type: 'info',
     on : this.irrigation,
   };
    reloadCard: CardSettings = {
-<<<<<<< HEAD
+
     title: 'Atualizar Informações',
-=======
-    title: 'Atualizar informações',
->>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
+
     iconClass: 'ion-refresh',
     type: 'success',
     on : true,

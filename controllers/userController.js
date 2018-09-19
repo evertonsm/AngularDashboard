@@ -2,43 +2,30 @@ const express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
-<<<<<<< HEAD
+
 var jwt = require ('jsonwebtoken'); 
 var bcrypt = require ('bcryptjs');
 var config = require ('./config');
 
-=======
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
-var config = require('./config');
->>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
+
 
 // variaveis do MongoDB
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-<<<<<<< HEAD
+
 router.post('/register', function(req, res) {
   
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     var typeUser = 'user';
-    
-    User.create({
-      fullName : req.body.fullName,
-      email : req.body.email,
-      password : hashedPassword,
-      type: typeUser
-    },
-=======
-router.post('/register', function (req, res) {
-
+  
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
   User.create({
-    name: req.body.name,
+    fullName: req.body.fullName,
     email: req.body.email,
     password: hashedPassword
   },
->>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
+
     function (err, user) {
 
       if (err) return res.status(500).send("There was a problem registering the user.")
@@ -46,11 +33,11 @@ router.post('/register', function (req, res) {
       var token = jwt.sign({ id: user._id }, config.secret, {
         //expiresIn: 86400 // expires in 24 hours
       });
-<<<<<<< HEAD
+
       res.status(200).send({ auth: true, token: token });
       console.log(user);
     }); 
-=======
+
     
       MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -69,8 +56,8 @@ router.post('/register', function (req, res) {
       });
 
     });
->>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
-  });
+
+ 
 
   router.get('/me', function (req, res) {
     var token = req.headers['x-access-token'];

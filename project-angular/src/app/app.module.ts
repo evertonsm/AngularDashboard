@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { ToasterModule, ToasterService } from '../../node_modules/angular2-toaster/angular2-toaster';
 import { Station1Service } from './pages/garden/station1/station1.service';
 import { Station2Service } from './pages/garden/station2/station2.service';
 

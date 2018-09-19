@@ -25,7 +25,7 @@ router.post('/', (req,res)=> {
     var st = new Station({
         name: req.body.name,
         aDate : new Date(),
-        irrigation: req.body.irrigation,
+        //irrigation: req.body.irrigation,
         humidity: req.body.humidity
 
 
