@@ -12,6 +12,7 @@ export class Station1Service {
     selectedStation: Station;
     station: Station[];
     value: boolean;
+    teste: Station;
     
     readonly baseURL = 'http://localhost:8000/stations/';
 
@@ -22,14 +23,21 @@ export class Station1Service {
         return  this.http.get<Station[]>(this.baseURL+name);
         
     }
-    
-  
-    getIrrigation(name: string): Observable<Station[]>
+
+    setStation(station2: Station)
     {   
-        console.log("aqui");
-       // this.value = true;
-          return this.http.get<Station[]>(this.baseURL+name)
-        //return this.value;
+       
+        
+        this.http.post(this.baseURL+name,
+      JSON.stringify(station2)).subscribe(
+      data => {
+        alert('ok');
+      },
+      error => {
+        console.log(JSON.stringify(error.json()));
+      }
+      )
+        
     }
 
 }

@@ -25,11 +25,13 @@ router.post('/', (req,res)=> {
     var st = new Station({
         name: req.body.name,
         aDate : new Date(),
-        //irrigation: req.body.irrigation,
+        irrigation: req.body.irrigation,
         humidity: req.body.humidity
 
 
     });
+    console.log('Tentando dar post')
+    console.log(req.body)
     st.save((err,doc)=>{
         if(!err) { res.send(doc);}
         else{ console.log('Error in Trigger Save:' + JSON.stringify(err,undefined,2));}        

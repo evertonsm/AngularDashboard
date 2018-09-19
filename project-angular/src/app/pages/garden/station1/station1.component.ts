@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '../../../../../node_modules/@angular/core';
 import { ToasterConfig, ToasterService, Toast, BodyOutputType, ToasterModule, ToasterContainerComponent } from '../../../../../node_modules/angular2-toaster/angular2-toaster';
-import { takeWhile } from '../../../../../node_modules/rxjs/operators/takeWhile' ;
+import { takeWhile } from '../../../../../node_modules/rxjs/operators/takeWhile';
 import { NbThemeService } from '../../../../../node_modules/@nebular/theme';
-import { Station1Service} from './station1.service'
-import { Station} from './station.model'
+import { Station1Service } from './station1.service'
+import { Station } from './station.model'
 
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -21,42 +21,45 @@ interface CardSettings {
   templateUrl: 'station1.component.html',
   styleUrls: ['./station1.component.scss'],
 })
-export class Station1Component implements OnDestroy, OnInit{
+export class Station1Component implements OnDestroy, OnInit {
 
   private alive = true;
   statusCards: string;
-  
+
   stations: Station[];
-  irrigation = true;
-  
+  irrigation: boolean;
+  init: boolean;
+
+
+
   waterCard: CardSettings = {
     title: 'Acionar Irrigação',
 
     iconClass: 'nb-rainy',
     type: 'info',
-    on : this.irrigation,
+    on: this.irrigation,
   };
-   reloadCard: CardSettings = {
+  reloadCard: CardSettings = {
 
     title: 'Atualizar Informações',
 
     iconClass: 'ion-refresh',
     type: 'success',
-    on : true,
+    on: true,
   };
-    
+
 
   commonStatusCardsSet: CardSettings[] = [
     this.waterCard,
     this.reloadCard,
-    
+
   ];
 
   statusCardsByThemes: {
     default: CardSettings[];
-    
+
   } = {
-    default: this.commonStatusCardsSet,
+      default: this.commonStatusCardsSet,
     };
 
   constructor(private themeService: NbThemeService, private station1Service: Station1Service, toasterService: ToasterService) {
@@ -64,60 +67,72 @@ export class Station1Component implements OnDestroy, OnInit{
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.statusCards = this.statusCardsByThemes[theme.name];
-        
-    });
+
+      });
     this.toasterService = toasterService;
+
+    this.refreshSensor()
+
   }
 
   ngOnDestroy() {
     this.alive = false;
   }
 
-  ngOnInit(){
-     this.refreshSensor();
-     this.refreshIrrigation();
+  ngOnInit() {
+    this.refreshSensor();
+
   }
 
-  
- refreshSensor(){
-  this.station1Service.getStation("1").subscribe((res)=>{
-        this.stations = res;
-      });
-  }
 
-  refreshIrrigation(){
-    this.station1Service.getIrrigation("1").subscribe((res)=>{
-        this.stations = res;
-        });
+  refreshSensor() {
+    this.station1Service.getStation("1").subscribe((res) => {
+      this.stations = res;
+      this.irrigation = this.stations[0].irrigation;
+      
+      if (this.irrigation == true) {
+        this.waterCard.on = true;
         
-    }
+      } else {
+        this.waterCard.on = false;
+       
+      }
+    
+     
+      this.reciverFeedback("Acionar irrigação")
+
+    });
+  }
 
 
   reciverFeedback(res) {
-    if(res == "Acionar Irrigação"){
-        this.refreshIrrigation();
-        this.waterCard.on = !this.waterCard.on;
-        if(this.waterCard.on == true)this.showToastWater();
+    if (res == "Acionar Irrigação") {
 
+      this.waterCard.on = !this.waterCard.on;
+      if (this.waterCard.on == true) this.showToastWater();
+      this.stations[0].irrigation = this.waterCard.on;
+      console.log("Water card = "+this.waterCard.on)
+      this.station1Service.setStation(this.stations[0]);
     }
-    else{
+    else {
       this.showToastInformations();
-      this.refreshSensor();
-    } 
-    
+     
+      //this.refreshSensor();
+    }
+
   }
 
 
   //######################   TOASTER     #######################################
-  
+
   config: ToasterConfig;
   private toasterService: ToasterService;
-      popToast() {
-      this.toasterService.pop('success', 'Args Title', 'Args Body');
+  popToast() {
+    this.toasterService.pop('success', 'Args Title', 'Args Body');
   }
 
   showToastInformations() {
-      this.config = new ToasterConfig({
+    this.config = new ToasterConfig({
       positionClass: 'toast-top-right',
       timeout: 2000,
       newestOnTop: true,
@@ -139,24 +154,24 @@ export class Station1Component implements OnDestroy, OnInit{
 
   showToastWater() {
     this.config = new ToasterConfig({
-    positionClass: 'toast-top-right',
-    timeout: 2000,
-    newestOnTop: true,
-    tapToDismiss: true,
-    preventDuplicates: true,
-    animation: 'slideUp',
-    limit: 3,
-  });
-  const toast: Toast = {
-    type: 'info',
-    title: null,
-    body: `Válvula de Irrigação Acionada`,
-    timeout: 2000,
-    showCloseButton: false,
-    bodyOutputType: BodyOutputType.TrustedHtml,
-  };
-  this.toasterService.popAsync(toast);
-}
+      positionClass: 'toast-top-right',
+      timeout: 2000,
+      newestOnTop: true,
+      tapToDismiss: true,
+      preventDuplicates: true,
+      animation: 'slideUp',
+      limit: 3,
+    });
+    const toast: Toast = {
+      type: 'info',
+      title: null,
+      body: `Válvula de Irrigação Acionada`,
+      timeout: 2000,
+      showCloseButton: false,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+    };
+    this.toasterService.popAsync(toast);
+  }
 
   clearToasts() {
     this.toasterService.clear();
@@ -192,5 +207,5 @@ export class Station1Component implements OnDestroy, OnInit{
       }
     }
   }*/
-  
+
 }
