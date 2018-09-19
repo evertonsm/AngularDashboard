@@ -40,6 +40,7 @@ app.listen ( port , () => {
 app.use('/user', userController);  
 app.use('/trigger', triggerController);
 app.use('/stations', stationController);
+
 //app.use('/video', videoController);
 
 //adding middleware - cors
