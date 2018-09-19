@@ -30,13 +30,21 @@ export class Station1Component implements OnDestroy, OnInit{
   irrigation = true;
   
   waterCard: CardSettings = {
+<<<<<<< HEAD
     title: 'Acionar Irrigação',
+=======
+    title: 'Acionar água no jardim',
+>>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
     iconClass: 'nb-rainy',
     type: 'info',
     on : this.irrigation,
   };
    reloadCard: CardSettings = {
+<<<<<<< HEAD
     title: 'Atualizar Informações',
+=======
+    title: 'Atualizar informações',
+>>>>>>> 22b81700619f4e0b6d5256ffba76c9922f56f559
     iconClass: 'ion-refresh',
     type: 'success',
     on : true,
