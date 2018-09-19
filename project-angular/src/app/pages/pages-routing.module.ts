@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -16,8 +17,10 @@ const routes: Routes = [{
     path: 'garden',
     loadChildren: './garden/garden.module#GardenModule',
   }, {
-    path: 'components',
-    loadChildren: './components/components.module#ComponentsModule',
+    path: 'cultivo',
+    //loadChildren: './cultivo/cultivo.module#ComponentsModule',
+    //loadChildren: './tables/tables.module#TablesModule',
+    
   }, {
     path: 'maps',
     loadChildren: './maps/maps.module#MapsModule',

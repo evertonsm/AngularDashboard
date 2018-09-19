@@ -27,15 +27,16 @@ export class Station1Component implements OnDestroy, OnInit{
   statusCards: string;
   
   stations: Station[];
+  irrigation = true;
   
   waterCard: CardSettings = {
-    title: 'Water the garden',
+    title: 'Acionar Irrigação',
     iconClass: 'nb-rainy',
     type: 'info',
-    on : false,
+    on : this.irrigation,
   };
    reloadCard: CardSettings = {
-    title: 'Reload informations',
+    title: 'Atualizar Informações',
     iconClass: 'ion-refresh',
     type: 'success',
     on : true,
@@ -71,6 +72,7 @@ export class Station1Component implements OnDestroy, OnInit{
 
   ngOnInit(){
      this.refreshSensor();
+     this.refreshIrrigation();
   }
 
   
@@ -80,9 +82,17 @@ export class Station1Component implements OnDestroy, OnInit{
       });
   }
 
+  refreshIrrigation(){
+    this.station1Service.getIrrigation("1").subscribe((res)=>{
+        this.stations = res;
+        });
+        
+    }
+
 
   reciverFeedback(res) {
-    if(res == "Water the garden"){
+    if(res == "Acionar Irrigação"){
+        this.refreshIrrigation();
         this.waterCard.on = !this.waterCard.on;
         if(this.waterCard.on == true)this.showToastWater();
 
@@ -96,7 +106,6 @@ export class Station1Component implements OnDestroy, OnInit{
 
 
   //######################   TOASTER     #######################################
-
   
   config: ToasterConfig;
   private toasterService: ToasterService;
@@ -117,7 +126,7 @@ export class Station1Component implements OnDestroy, OnInit{
     const toast: Toast = {
       type: 'success',
       title: null,
-      body: `Updated informations`,
+      body: `Informações Atualizadas`,
       timeout: 2000,
       showCloseButton: false,
       bodyOutputType: BodyOutputType.TrustedHtml,
@@ -138,7 +147,7 @@ export class Station1Component implements OnDestroy, OnInit{
   const toast: Toast = {
     type: 'info',
     title: null,
-    body: `Water the garden`,
+    body: `Válvula de Irrigação Acionada`,
     timeout: 2000,
     showCloseButton: false,
     bodyOutputType: BodyOutputType.TrustedHtml,
@@ -151,7 +160,6 @@ export class Station1Component implements OnDestroy, OnInit{
   }
 
   //#################### BUTTON ###########
-
 
   countDownDate = 0;
   countDown = 0;
@@ -167,7 +175,6 @@ export class Station1Component implements OnDestroy, OnInit{
         this.on = true;
     
       else{
-
         this.countDown = new Date().getSeconds();
        
         if(this.countDownDate+10 < this.countDown || this.countDownDate > this.countDown )
@@ -176,7 +183,6 @@ export class Station1Component implements OnDestroy, OnInit{
           this.countDownDate = 0;
           this.countDown = 0;
         }
-
         if(this.countDownDate == 0)
           this.countDownDate = new Date().getSeconds();
                                        

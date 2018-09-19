@@ -16,8 +16,10 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { Station1Service } from './pages/garden/station1/station1.service';
+import { Station2Service } from './pages/garden/station2/station2.service';
 
 import { AuthGuard } from './auth-guard.service'
+import { Station3Service } from './pages/garden/station3/station3.service';
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { AuthGuard } from './auth-guard.service'
     ToasterModule.forRoot()
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard,Station1Service,
+  providers: [AuthGuard,Station1Service, Station2Service, Station3Service,
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
 })

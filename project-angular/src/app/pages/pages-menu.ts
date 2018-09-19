@@ -23,11 +23,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Canteiro #2',
-        link: '#',
+        link: '/pages/garden/station2',
       },
       {
         title: 'Canteiro #3',
-        link: '/pages/ui-features/icons',
+        link: '/pages/garden/station3',
       },
       /*
       {
@@ -186,7 +186,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },*/
   {
     title: "Cultivo",
-    icon: "nb-partlysunny"
+    icon: "nb-partlysunny",
+    link: '/pages/cultivo'
   },
   {
     title: "Projeto",

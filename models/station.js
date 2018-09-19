@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 var Station = mongoose.model('Station', {
     name: { type: String},
     aDate: {type: Date},
-    humidity: { type: Array}
+    irrigation :{type: Boolean},
+    humidity: {type: Array}
 
 });
 

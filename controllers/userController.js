@@ -4,17 +4,20 @@ var User  = require ('../models/user');
 
 var jwt = require ('jsonwebtoken'); 
 var bcrypt = require ('bcryptjs');
-var config = require ('./config'); 
+var config = require ('./config');
+
 
 
 router.post('/register', function(req, res) {
   
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    var typeUser = 'user';
     
     User.create({
-      name : req.body.name,
+      fullName : req.body.fullName,
       email : req.body.email,
-      password : hashedPassword
+      password : hashedPassword,
+      type: typeUser
     },
     function (err, user) {
       if (err) return res.status(500).send("There was a problem registering the user.")
@@ -23,6 +26,7 @@ router.post('/register', function(req, res) {
         //expiresIn: 86400 // expires in 24 hours
       });
       res.status(200).send({ auth: true, token: token });
+      console.log(user);
     }); 
   });
 
