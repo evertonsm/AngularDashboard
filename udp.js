@@ -1,12 +1,12 @@
 var s_port = 41235;
 var BROADCAST_ADDR = "192.168.2.7";
-var HOST = 'localhost'
+var HOST = 'http://131.221.243.115'
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
 //encapsulado num pacote IPv4 ou IPv6 a um destino, porém sem qualquer tipo 
 //de garantia que o pacote chegue corretamente (ou de qualquer modo).
-console.log("testando");
+
 var dgram = require("dgram");
 var server_udp = dgram.createSocket("udp4");
 
