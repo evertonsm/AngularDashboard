@@ -1,6 +1,6 @@
 var s_port = 41235;
 var BROADCAST_ADDR = "192.168.2.7";
-var HOST = 'http://131.221.243.115'
+var HOST = '0.0.0.0'
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
