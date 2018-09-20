@@ -6,7 +6,7 @@ var HOST = 'localhost'
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
 //encapsulado num pacote IPv4 ou IPv6 a um destino, porém sem qualquer tipo 
 //de garantia que o pacote chegue corretamente (ou de qualquer modo).
-
+console.log("testando");
 var dgram = require("dgram");
 var server_udp = dgram.createSocket("udp4");
 
