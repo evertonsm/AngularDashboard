@@ -38,7 +38,7 @@ server_udp.on("message", function (msg, rinfo) {
     console.log('Nome msg = ' + msg2.name)
 
     dbo.collection("stations").insert(
-      jason,
+      json,
       function (err, result) {
 
 
