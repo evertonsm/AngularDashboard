@@ -43,7 +43,7 @@ router.post('/', (req,res)=> {
 
 var { Sensors } = require('../models/sensors');
 
-// => localhost:8000/station/
+// => 192.168.180.15:8000/station/
 
 router.get('/', (req,res) => {
     Sensors.find((err,docs) =>{

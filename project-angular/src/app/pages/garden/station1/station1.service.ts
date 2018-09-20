@@ -14,7 +14,7 @@ export class Station1Service {
     value: boolean;
     teste: Station;
     
-    readonly baseURL = 'http://localhost:8000/stations/';
+    readonly baseURL = 'http://192.168.180.15:8000/stations/';
 
     constructor(private http: HttpClient) { }
     
