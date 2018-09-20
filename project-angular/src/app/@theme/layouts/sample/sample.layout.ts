@@ -132,7 +132,7 @@ export class SampleLayoutComponent implements OnDestroy {
       .subscribe(([item, [bpFrom, bpTo]]: [any, [NbMediaBreakpoint, NbMediaBreakpoint]]) => {
 
         if (bpTo.width <= isBp.width) {
-          //this.sidebarService.collapse('menu-sidebar');
+          this.sidebarService.collapse('menu-sidebar');
         }
       });
 
