@@ -22,8 +22,9 @@ import { AuthGuard } from './auth-guard.service'
 import { Station3Service } from './pages/garden/station3/station3.service';
 
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

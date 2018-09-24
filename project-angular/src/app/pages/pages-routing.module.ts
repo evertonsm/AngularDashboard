@@ -4,6 +4,8 @@ import { AuthGuard} from '../auth-guard.service'
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { ProjetoComponent } from './projeto/projeto.component';
+import { CultivoComponent } from './cultivo/cultivo.component';
 
 
 const routes: Routes = [{
@@ -18,13 +20,16 @@ const routes: Routes = [{
     loadChildren: './garden/garden.module#GardenModule',
   }, {
     path: 'cultivo',
-    //loadChildren: './cultivo/cultivo.module#ComponentsModule',
-    //loadChildren: './tables/tables.module#TablesModule',
+    component: CultivoComponent,
     
   }, {
     path: 'maps',
     loadChildren: './maps/maps.module#MapsModule',
   }, {
+    path: 'projeto',
+    component: ProjetoComponent,
+  },
+  /*{
     path: 'charts',
     loadChildren: './charts/charts.module#ChartsModule',
   }, {
@@ -39,7 +44,8 @@ const routes: Routes = [{
   }, {
     path: 'miscellaneous',
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
-  }, {
+  }, */
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

@@ -191,7 +191,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: "Projeto",
-    icon: "nb-paper-plane"
+    icon:"nb-lightbulb",
+    link: "/pages/projeto"
   },
   {
     title: "Contate-nos",
