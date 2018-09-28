@@ -32,5 +32,35 @@ export class Station3Service {
         //return this.value;
     }
 
+    setStation(station2: Station) {
+
+
+
+
+
+        this.http.post(this.baseURL + name,
+          {
+            name: station2.name,
+            irrigation: station2.irrigation,
+            humidity: station2.humidity
+          }
+        ).subscribe(
+    
+          data => {
+    
+            alert('Estado da bomba = ' + station2.irrigation);
+    
+          },
+    
+          error => {
+    
+            console.log(JSON.stringify(error.json()));
+    
+          }
+    
+        )
+    
+    
+
 }
 

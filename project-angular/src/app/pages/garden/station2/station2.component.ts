@@ -76,12 +76,6 @@ export class Station2Component implements OnDestroy, OnInit{
   }
 
   
- refreshSensor(){
-  this.station2Service.getStation("1").subscribe((res)=>{
-        this.stations = res;
-      });
-  }
-
   refreshIrrigation(){
     this.station2Service.getIrrigation("2").subscribe((res)=>{
         this.stations = res;
@@ -89,20 +83,40 @@ export class Station2Component implements OnDestroy, OnInit{
         
     }
 
-
-  reciverFeedback(res) {
-    if(res == "Acionar Irrigação"){
-        this.refreshIrrigation();
-        this.waterCard.on = !this.waterCard.on;
-        if(this.waterCard.on == true)this.showToastWater();
-
+    refreshSensor() {
+      this.station2Service.getStation("2").subscribe((res) => {
+        this.stations = res;
+        this.irrigation = this.stations[0].irrigation;
+     
+        if (this.irrigation == true) {
+          this.waterCard.on = true;
+          
+        } else {
+          this.waterCard.on = false;
+         
+        }
+      
+       
+        this.reciverFeedback("Acionar irrigação")
+  
+      });
     }
-    else{
-      this.showToastInformations();
-      this.refreshSensor();
-    } 
-    
-  }
+  
+  
+    reciverFeedback(res) {
+      if (res == "Acionar Irrigação") {
+
+        this.waterCard.on = !this.waterCard.on;
+        if (this.waterCard.on == true) this.showToastWater();
+        this.stations[0].irrigation = this.waterCard.on;
+        console.log("Water card = "+this.waterCard.on)
+        this.station2Service.setStation(this.stations[0]);
+      }
+      else {
+        this.showToastInformations();
+       
+        //this.refreshSensor();
+      }
 
 
   //######################   TOASTER     #######################################
