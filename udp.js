@@ -31,49 +31,35 @@ server_udp.on("message", function (msg, rinfo) {
     if (err) throw err;
     var dbo = db.db("dashboard");
 
-
     var json = JSON.parse(msg)
-    console.log('Nome Json = ' + json.name)
-    var msg2 = msg.toString()
-    console.log('Nome msg = ' + msg2.name)
+    console.log('Nome Json = ' + json.name);
 
-    dbo.collection("stations").insert(
-      jason,
+    var bomba = json.bomba;
+    var irrigation_aux = false;
+    if(bomba == "Ligado")
+    {
+      irrigation_aux = true;
+    }
+    else
+    {
+      irrigation_aux = false;
+    }
+  
+    dbo.collection("stations").updateOne(
+      {name: json.name} ,
+      { $set: { 
+        humidity: json.humidity,
+        irrigation: irrigation_aux
+      } 
+    },
       function (err, result) {
-
 
         if (err) throw err;
 
-        var ack = new Buffer("ack");
-
-        var resp = "Oi";
-        server_udp.send(resp, 0, ack.length, rinfo.port, rinfo.address, function (err, bytes) {
-          console.log("sent ACK.");
-        });
-        
-
+        console.log('Deu certo!!')
         db.close();
 
-        //dbo.collection("stations").replaceOne(
-        //  { name: "1" },
-        //  json,
-        //  { upsert: true },
-        //  function (err, result) {
-
-
-        //   if (err) throw err;
-
-        //   var ack = new Buffer("ack");
-
-        //   var resp = "Oi";
-        //   server_udp.send(resp, 0, ack.length, rinfo.port, rinfo.address, function (err, bytes) {
-        //     console.log("sent ACK.");
-        //  });
-
-        //  db.close();
-
       });
-    // atualiza o dashboard
 
 
   });
@@ -89,7 +75,7 @@ server_udp.on("close", function () {
   console.log("closed.");
 });
 
-server_udp.bind(s_port, HOST);
+server_udp.bind(s_port);
 
 module.exports = server_udp;
 

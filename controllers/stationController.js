@@ -11,6 +11,8 @@ var url = "mongodb://localhost:27017/";
 var dgram = require("dgram");
 var client = dgram.createSocket("udp4");
 
+var stations = [];
+
 router.get('/', (req, res) => {
     Station.find((err, docs) => {
         if (!err) { res.send(docs); }
@@ -28,10 +30,10 @@ router.get('/:name', (req, res) => {
 
     var a = [];
     Station.findOne({ 'name': req.params.name }, (err, obj) => {
-        if (!err) { 
+        if (!err) {
             a.push(obj);
-           
-            res.send(a); 
+
+            res.send(a);
         }
         else { console.log('Error in Retriving Station:'); }
 
@@ -59,22 +61,69 @@ router.post('/', (req, res) => {
             { $set: { irrigation: req.body.irrigation } },
             function (err, result) {
                 if (err) throw err;
-                console.log('Deu certo!!')
 
-                db.close();
+                console.log('Dado atualizado com sucesso!')
 
             });
 
-        // mandar para o bueno o JSON
+        this.stations = dbo.collection("stations").find().toArray(function (err, result) {
+            if (err) throw err;
+
+            console.log('Busca feita com sucesso!')
+
+            this.stations = result;
+
+
+            db.close();
+
+            var b1 = this.stations[0].irrigation;
+            var b2 = this.stations[1].irrigation;
+            var b3 = this.stations[2].irrigation;
+
+
+            // possibilidades da bomba
+            /*
+                0 0 0
+                0 0 1
+                0 1 0
+                0 1 1
+                1 0 0
+                1 0 1
+                1 1 0
+                1 1 1
+            */
+
+            if (b1 == false && b2 == false && b3 == false)
+                var ack = new Buffer("[D,D,D]");
+            else if (b1 == false && b2 == false && b3 == true)
+                var ack = new Buffer("[D,D,L]");
+            else if (b1 == false && b2 == true && b3 == false)
+                var ack = new Buffer("[D,L,D]");
+            else if (b1 == false && b2 == true && b3 == true)
+                var ack = new Buffer("[D,L,L]");
+            else if (b1 == true && b2 == false && b3 == false)
+                var ack = new Buffer("[L,D,D]");
+            else if (b1 == true && b2 == false && b3 == true)
+                var ack = new Buffer("[L,D,L]");
+            else if (b1 == true && b2 == true && b3 == false)
+                var ack = new Buffer("[L,L,D]");
+            else if (b1 == true && b2 == true && b3 == true)
+                var ack = new Buffer("[L,L,L]");
+
+            // mandar para o bueno o JSON
+            client.send(ack, 0, ack.length, "4210", "192.168.1.200", function (err, bytes) {
+                console.log("Mensagem enviada!!." + ack);
+            });
+
+        });
+
+
+
 
     });
 
-    var ack = new Buffer("[D,D,L]")
-    client.send(ack, 0, ack.length, "4210", "192.168.1.200", function (err, bytes) {
-        console.log("Mensagem enviada!!.");
-    });
 
-    console.log('TESTE5')
+
 });
 
 module.exports = router;
