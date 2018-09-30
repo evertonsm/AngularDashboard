@@ -9,6 +9,7 @@ import { Station } from './station.model';
 @Injectable()
 export class Station3Service {
 
+<<<<<<< HEAD
   selectedStation: Station;
   station: Station[];
   value: boolean;
@@ -61,6 +62,30 @@ export class Station3Service {
 
 
   }
+=======
+    selectedStation: Station;
+    station: Station[];
+    value: boolean;
+    
+    readonly baseURL = 'http://131.221.243.115:8000/stations/';
+
+    constructor(private http: HttpClient) { }
+    
+    getStation(name: string): Observable<Station[]>
+    {   
+        return  this.http.get<Station[]>(this.baseURL+name);
+        
+    }
+    
+  
+    getIrrigation(name: string): Observable<Station[]>
+    {   
+        console.log("aqui");
+       // this.value = true;
+          return this.http.get<Station[]>(this.baseURL+name)
+        //return this.value;
+    }
+>>>>>>> 696b8f2213ec68dc701b93edb4b7c7e3a30288a0
 
 }
 

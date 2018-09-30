@@ -42,14 +42,7 @@ import { StateService } from '../../../@core/data/state.service';
         <ng-content select="router-outlet"></ng-content>
       </nb-layout-column>
 
-      <nb-layout-column start class="small" *ngIf="layout.id === 'two-column' || layout.id === 'three-column'">
-        <nb-menu [items]="subMenu"></nb-menu>
-      </nb-layout-column>
-
-      <nb-layout-column class="small" *ngIf="layout.id === 'three-column'">
-        <nb-menu [items]="subMenu"></nb-menu>
-      </nb-layout-column>
-
+  
       <nb-layout-footer fixed>
         <ngx-footer></ngx-footer>
       </nb-layout-footer>
@@ -132,7 +125,7 @@ export class SampleLayoutComponent implements OnDestroy {
       .subscribe(([item, [bpFrom, bpTo]]: [any, [NbMediaBreakpoint, NbMediaBreakpoint]]) => {
 
         if (bpTo.width <= isBp.width) {
-          //this.sidebarService.collapse('menu-sidebar');
+          this.sidebarService.collapse('menu-sidebar');
         }
       });
 

@@ -1,6 +1,6 @@
 var s_port = 41235;
 var BROADCAST_ADDR = "192.168.2.7";
-var HOST = 'localhost'
+var HOST = '0.0.0.0'
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
@@ -32,6 +32,7 @@ server_udp.on("message", function (msg, rinfo) {
     var dbo = db.db("dashboard");
 
     var json = JSON.parse(msg)
+<<<<<<< HEAD
     console.log('Nome Json = ' + json.name);
 
     var bomba = json.bomba;
@@ -52,6 +53,14 @@ server_udp.on("message", function (msg, rinfo) {
         irrigation: irrigation_aux
       } 
     },
+=======
+    console.log('Nome Json = ' + json.name)
+    var msg2 = msg.toString()
+    console.log('Nome msg = ' + msg2.name)
+
+    dbo.collection("stations").insert(
+      json,
+>>>>>>> 696b8f2213ec68dc701b93edb4b7c7e3a30288a0
       function (err, result) {
 
         if (err) throw err;
