@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ToasterConfig, ToasterService, Toast, BodyOutputType, ToasterModule, ToasterContainerComponent } from 'angular2-toaster';
+import { ToasterConfig, ToasterService, Toast, BodyOutputType, ToasterModule, ToasterContainerComponent } from '../../../../../node_modules/angular2-toaster/angular2-toaster';
 import { takeWhile } from 'rxjs/operators/takeWhile' ;
 import { NbThemeService } from '@nebular/theme';
 import { Station3Service} from './station3.service'
