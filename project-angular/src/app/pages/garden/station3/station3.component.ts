@@ -116,6 +116,7 @@ export class Station3Component implements OnDestroy, OnInit{
        
         //this.refreshSensor();
       }
+    }
 
   //######################   TOASTER     #######################################
   
