@@ -19,12 +19,30 @@ const port = 8000
 const ip = '131.221.243.115'
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://131.221.243.115:4200");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+);
+  //res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
   next();
 });
+/*
+const cors = require('cors');
+const whitelist = ['http://localhost:4200', 'http://example2.com'];
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
+
+      callback(new Error('Not allowed by CORS'));
+  }
+}
+*/
+app.use(cors(corsOptions));
 
 
 //body - parser
