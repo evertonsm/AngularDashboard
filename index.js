@@ -19,6 +19,7 @@ const port = 8000
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
   next();
@@ -33,7 +34,7 @@ app.use(bodyparser.json());
 
 // listen (start app with node server.js)
 app.listen ( port , () => { 
-  console .log ( 'Servidor HTTP em: http://0.0.0.0: '+port);
+  console .log ( 'Servidor HTTP em: http://localhost: '+port);
   console .log ( 'Para fechar: Ctrl + c' ); 
 });
 
@@ -44,5 +45,5 @@ app.use('/stations', stationController);
 //app.use('/video', videoController);
 
 //adding middleware - cors
-//app.use(cors({origin: 'http://0.0.0.0:4200/#/pages/garden/station1'}));
+//app.use(cors({origin: 'http://localhost:4200/#/pages/garden/station1'}));
 

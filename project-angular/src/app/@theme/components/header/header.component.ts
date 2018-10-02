@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     
     this.chave = this.guard.getChave();
     console.log(this.chave);
-    this.http.get('http://0.0.0.0:8000/user/me',{ headers: {'x-access-token': this.chave} })
+    this.http.get('http://localhost:8000/user/me',{ headers: {'x-access-token': this.chave} })
     .subscribe((data : User) => {
         this.users = data;
     })
