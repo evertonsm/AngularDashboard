@@ -1,6 +1,6 @@
 var s_port = 41235;
 var BROADCAST_ADDR = "192.168.2.7";
-var HOST = 'localhost'
+var HOST = '0.0.0.0'
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
@@ -15,7 +15,7 @@ var router = express.Router();
 
 // variaveis do MongoDB
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://0.0.0.0:27017/";
 
 server_udp.on("listening", function () {
   var address = server_udp.address();

@@ -1,5 +1,5 @@
-var PORT = 41235;
-var IP = '192.168.1.119' // dúvida
+var PORT = "41235";
+var IP = "192.168.1.119"; // dúvida
 var dgram = require('dgram');
 var message = new Buffer("Teste");
 var client = dgram.createSocket("udp4");
@@ -20,17 +20,17 @@ var sendMsg = function (error) {
         if (!error) {
             
             if(cont == 1)
-            client.send(JSON.stringify(json1), "41235", "192.168.1.119", function (err, bytes) {
+            client.send(JSON.stringify(json1), PORT, IP, function (err, bytes) {
                 console.log("Mensagem enviada - 1!!.");
                 cont = cont + 1;
             });
             else if(cont == 2)
-            client.send(JSON.stringify(json2), "41235", "192.168.1.119", function (err, bytes) {
+            client.send(JSON.stringify(json2), PORT, IP, function (err, bytes) {
                 console.log("Mensagem enviada - 2!!.");
                 cont = cont + 1;
             });
             else if(cont == 3)
-            client.send(JSON.stringify(json3), "41235", "192.168.1.119", function (err, bytes) {
+            client.send(JSON.stringify(json3), PORT, IP , function (err, bytes) {
                 console.log("Mensagem enviada - 3!!.");
                 cont = cont + 1;
             });

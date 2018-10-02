@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
   })
 */
 
-// => localhost:8000/video/
+// => 0.0.0.0:8000/video/
 
 
 module.exports = router;
