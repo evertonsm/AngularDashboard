@@ -40,8 +40,13 @@ router.post('/register', function(req, res) {
 
     
       MongoClient.connect(url, function (err, db) {
+
+        console.log('Aqui 1');
+
         if (err) throw err;
-        var dbo = db.db("user");
+
+        var dbo = db.db("dashboard");
+        
         dbo.collection("userCollection").insertOne(user, function (err, result) {
           if (err) throw err;
           console.log('aqui = '+result)

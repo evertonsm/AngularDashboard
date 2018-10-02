@@ -54,6 +54,9 @@ router.post('/', (req, res) => {
     });
 
     MongoClient.connect(url, function (err, db) {
+
+        console.log('Aqui 2');
+
         if (err) throw err;
         var dbo = db.db("dashboard");
         dbo.collection("stations").updateOne(

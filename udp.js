@@ -28,6 +28,9 @@ server_udp.on("message", function (msg, rinfo) {
   // verificação de segurança
   // manda pro banco
   MongoClient.connect(url, function (err, db) {
+
+    console.log('Aqui 3');
+
     if (err) throw err;
     var dbo = db.db("dashboard");
 
