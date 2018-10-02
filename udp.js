@@ -25,11 +25,10 @@ server_udp.on("listening", function () {
 server_udp.on("message", function (msg, rinfo) {
 
   console.log("  ASCII: " + msg);
+  console.log("IP = "+rfindo.address+":"+rfindo.port)
   // verificação de segurança
   // manda pro banco
   MongoClient.connect(url, function (err, db) {
-
-    console.log('Aqui 3');
 
     if (err) throw err;
     var dbo = db.db("dashboard");
