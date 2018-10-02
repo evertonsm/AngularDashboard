@@ -1,7 +1,5 @@
-var s_port = 41235;
-var BROADCAST_ADDR = "192.168.2.7";
-var HOST = 'localhost'
-var ip = '';
+var s_port = 41234;
+
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
@@ -27,6 +25,7 @@ server_udp.on("message", function (msg, rinfo) {
 
 
   console.log("IP = "+rinfo.address+":"+rinfo.port)
+  console.log(msg.body);
   // verificação de segurança
   // manda pro banco
   MongoClient.connect(url, function (err, db) {
