@@ -16,7 +16,7 @@ var userController = require('./controllers/userController.js')
 
 const app = express ();
 const port = 8000
-const ip = '0.0.0.0'
+const ip = 'localhost'
 
 // formulário vem no formato URL encoded
 // bodyPaser é responsável por fazer a interpreção dos dados que vem de um formulário
