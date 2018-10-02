@@ -16,6 +16,7 @@ var userController = require('./controllers/userController.js')
 
 const app = express ();
 const port = 8000
+const ip = '131.221.243.115'
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,8 +34,8 @@ app.use(bodyparser.json());
 
 
 // listen (start app with node server.js)
-app.listen ( port , () => { 
-  console .log ( 'Servidor HTTP em: http://localhost: '+port);
+app.listen ( port , ip, () => { 
+  console .log ( `Servidor rodando em http://${ip}:${port}`);
   console .log ( 'Para fechar: Ctrl + c' ); 
 });
 
