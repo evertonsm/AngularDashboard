@@ -11,7 +11,7 @@ var config = require ('./config');
 
 // variaveis do MongoDB
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://131.221.243.115:27017/";
+var url = "mongodb://localhost:27017/";
 
 
 router.post('/register', function(req, res) {

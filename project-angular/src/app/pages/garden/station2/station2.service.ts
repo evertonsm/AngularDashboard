@@ -13,7 +13,7 @@ export class Station2Service {
     station: Station[];
     value: boolean;
 
-    readonly baseURL = 'http://131.221.243.115:8000/stations/';
+    readonly baseURL = 'http://localhost:8000/stations/';
 
     constructor(private http: HttpClient) { }
 

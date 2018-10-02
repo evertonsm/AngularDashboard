@@ -5,7 +5,7 @@ var { Station } = require('../models/station');
 
 // variaveis do MongoDB
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://131.221.243.115:27017/";
+var url = "mongodb://localhost:27017/";
 
 // udp
 var dgram = require("dgram");

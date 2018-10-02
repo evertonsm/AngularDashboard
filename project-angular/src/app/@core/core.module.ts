@@ -27,7 +27,7 @@ export const NB_CORE_PROVIDERS = [
           class: NbAuthJWTToken,
           key: 'token',
         },
-        baseEndpoint: 'http://131.221.243.115:8000/user',
+        baseEndpoint: 'http://localhost:8000/user',
         login: {
             endpoint: '/login',
             method: 'post'
