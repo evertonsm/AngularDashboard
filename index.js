@@ -24,12 +24,15 @@ const ip = '0.0.0.0'
 
 app.use(cors())
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://0.0.0.0:8000");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
   next();
 });
+
+
+
 /*
 const cors = require('cors');
 const whitelist = ['http://localhost:4200', 'http://example2.com'];
