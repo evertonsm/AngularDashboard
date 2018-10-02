@@ -34,7 +34,6 @@ server_udp.on("message", function (msg, rinfo) {
     var dbo = db.db("dashboard");
 
     var json = JSON.parse(msg)
-    console.log('Nome Json = ' + json.name);
 
     var bomba = json.bomba;
     var irrigation_aux = false;
@@ -58,7 +57,6 @@ server_udp.on("message", function (msg, rinfo) {
 
         if (err) throw err;
 
-        console.log('Deu certo!!')
         db.close();
 
       });
