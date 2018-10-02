@@ -16,7 +16,7 @@ var userController = require('./controllers/userController.js')
 
 const app = express ();
 const port = 8000
-const ip = '0.0.0.0'
+const ip = '131.221.243.115'
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

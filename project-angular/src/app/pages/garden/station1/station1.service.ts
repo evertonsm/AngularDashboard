@@ -30,7 +30,7 @@ export class Station1Service {
 
 
 
-  readonly baseURL = 'http://0.0.0.0:8000/stations/';
+  readonly baseURL = 'http://131.221.243.115:8000/stations/';
 
 
 
