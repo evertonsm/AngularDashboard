@@ -22,7 +22,7 @@ const ip = '0.0.0.0'
 // bodyPaser é responsável por fazer a interpreção dos dados que vem de um formulário
 // toda requisição que passar no meu backend, passará por esses midwares
 
-app.use(cors())
+//app.use(cors())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");

@@ -13,9 +13,6 @@ var config = require ('./config');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-//alert('oiii')
-console.log('oiii')
-
 router.post('/register', function(req, res) {
   
     var typeUser = 'user';
