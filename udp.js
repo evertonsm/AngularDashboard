@@ -1,6 +1,7 @@
 var s_port = 41235;
 var BROADCAST_ADDR = "192.168.2.7";
 var HOST = 'localhost'
+var ip = '';
 // O User Datagram Protocol (UDP)
 // é um protocolo simples da camada de transporte. 
 //Ele é descrito na RFC 768 e permite que a aplicação envie um datagrama 
@@ -24,7 +25,7 @@ server_udp.on("listening", function () {
 
 server_udp.on("message", function (msg, rinfo) {
 
-  console.log("  ASCII: " + msg);
+
   console.log("IP = "+rinfo.address+":"+rinfo.port)
   // verificação de segurança
   // manda pro banco

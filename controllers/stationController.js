@@ -119,7 +119,7 @@ router.post('/', (req, res) => {
                var json = {"bomba":["L","L","L"]};
 
             // mandar para o bueno o JSON
-            client.send(JSON.stringify(json), "4210", "192.168.1.245", function (err, bytes) {
+            client.send(JSON.stringify(json), "4210", "131.221.243.116", function (err, bytes) {
                 console.log("Mensagem enviada!!." + json.bomba);
             });
 
