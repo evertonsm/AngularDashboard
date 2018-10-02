@@ -17,16 +17,17 @@ var userController = require('./controllers/userController.js')
 const app = express ();
 const port = 8000
 const ip = '0.0.0.0'
+var cors = require('cors')
+// formulário vem no formato URL encoded
+// bodyPaser é responsável por fazer a interpreção dos dados que vem de um formulário
+// toda requisição que passar no meu backend, passará por esses midwares
 
+app.use(cors())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://0.0.0.0:8000");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-);
-  //res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
+  res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
   next();
 });
 /*
