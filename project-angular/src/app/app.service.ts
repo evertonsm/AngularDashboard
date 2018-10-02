@@ -13,7 +13,7 @@ export class AppService {
     constructor (private http: HttpClient) {}
 
     getApp(): Observable<any> {
-        return this.http.get<any>('http:131.221.243.115:8000');
+        return this.http.get<any>('http:0.0.0.0:8000');
 
     }
 
