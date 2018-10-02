@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/dashboard', (err) => {
+mongoose.connect('mongodb://131.221.243.115:27017/dashboard', (err) => {
 
     if(!err)
         console.log('MongoDB connection succeeded...');

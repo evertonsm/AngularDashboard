@@ -34,7 +34,7 @@ app.use(bodyparser.json());
 
 // listen (start app with node server.js)
 app.listen ( port , () => { 
-  console .log ( 'Servidor HTTP em: http://localhost: '+port);
+  console .log ( 'Servidor HTTP em: http://131.221.243.115: '+port);
   console .log ( 'Para fechar: Ctrl + c' ); 
 });
 
@@ -45,5 +45,5 @@ app.use('/stations', stationController);
 //app.use('/video', videoController);
 
 //adding middleware - cors
-//app.use(cors({origin: 'http://localhost:4200/#/pages/garden/station1'}));
+//app.use(cors({origin: 'http://131.221.243.115:4200/#/pages/garden/station1'}));
 

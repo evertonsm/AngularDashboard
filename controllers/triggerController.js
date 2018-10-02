@@ -3,7 +3,7 @@ var router = express.Router();
 var { Trigger } = require('../models/trigger');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-// => localhost:8000/trigger/
+// => 131.221.243.115:8000/trigger/
 router.get('/', (req,res) => {
     Trigger.find((err,docs) =>{
         if(!err) { res.send(docs);}
