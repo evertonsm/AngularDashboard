@@ -16,10 +16,10 @@ var userController = require('./controllers/userController.js')
 
 const app = express ();
 const port = 8000
-const ip = '131.221.243.115'
+const ip = '0.0.0.0'
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://131.221.243.115:4200");
+  res.header("Access-Control-Allow-Origin", "http://0.0.0.0:8000");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
   res.header(
