@@ -27,6 +27,7 @@ server_udp.on("message", function (msg, rinfo) {
 
 
   console.log("IP = "+rinfo.address+":"+rinfo.port)
+  console.log('MSG = '+msg)
   // verificação de segurança
   // manda pro banco
   MongoClient.connect(url, function (err, db) {
