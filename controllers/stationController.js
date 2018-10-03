@@ -66,6 +66,7 @@ router.post('/', (req, res) => {
 
             });
 
+<<<<<<< HEAD
         this.stations = dbo.collection("stations").find().toArray(function (err, result) {
             if (err) throw err;
 
@@ -124,6 +125,9 @@ router.post('/', (req, res) => {
             });
 
         });
+=======
+// => 131.221.243.115:8000/station/
+>>>>>>> 696b8f2213ec68dc701b93edb4b7c7e3a30288a0
 
 
 
