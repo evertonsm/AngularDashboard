@@ -48,17 +48,15 @@ export class Station1Service {
 
 
 
-  setStation(irg: boolean) {
+  setStation(station2: Station) {
 
-
-
-
+    console.log("Set Station")
 
     this.http.post(this.baseURL + name,
       {
-        name: "1",
-        irrigation: irg,
-        //humidity: station2.humidity
+        name: station2.name,
+        irrigation: station2.irrigation,
+        humidity: station2.humidity
       }
     ).subscribe(
 
@@ -70,7 +68,7 @@ export class Station1Service {
 
       error => {
 
-        console.log(JSON.stringify(error.json()));
+        console.log(JSON.stringify(error, undefined, 2));
 
       }
 
