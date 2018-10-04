@@ -60,7 +60,7 @@ app.use(bodyparser.json());
 app.listen ( port ,() => { 
   console .log ( `Servidor rodando em http://${ip}:${port}`);
   console .log ( 'Para fechar: Ctrl + c' ); 
-});
+}).timeout = 1000;
 
 app.use('/user', userController);  
 app.use('/trigger', triggerController);
