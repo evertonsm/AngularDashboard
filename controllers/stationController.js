@@ -37,9 +37,9 @@ router.post('/', (req, res) => {
 
     var st = new Station({
         name: req.body.name,
-        aDate: new Date(),
+        //aDate: new Date(),
         irrigation: req.body.irrigation,
-        humidity: req.body.humidity
+        //humidity: req.body.humidity
     });
 
     MongoClient.connect(url, function (err, db) {

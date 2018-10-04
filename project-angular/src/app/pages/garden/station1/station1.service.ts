@@ -48,7 +48,7 @@ export class Station1Service {
 
 
 
-  setStation(station2: Station) {
+  setStation(irg: boolean) {
 
 
 
@@ -56,9 +56,9 @@ export class Station1Service {
 
     this.http.post(this.baseURL + name,
       {
-        name: station2.name,
-        irrigation: station2.irrigation,
-        humidity: station2.humidity
+        name: "1",
+        irrigation: irg,
+        //humidity: station2.humidity
       }
     ).subscribe(
 
