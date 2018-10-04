@@ -40,8 +40,6 @@ router.post('/', (req, res) => {
         aDate: new Date(),
         irrigation: req.body.irrigation,
         humidity: req.body.humidity
-
-
     });
 
     MongoClient.connect(url, function (err, db) {
@@ -113,6 +111,7 @@ router.post('/', (req, res) => {
             /*res.send(JSON.stringify(json), "4210", "131.221.243.116", function (err, bytes) {
                 console.log("Mensagem enviada!!." + json.bomba);
             });*/
+            res.status(200);
             console.log("Mensagem enviada!!." + json.bomba);
 
         });
