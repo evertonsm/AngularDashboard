@@ -80,7 +80,7 @@ export class Station1Component implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    this.refreshSensor();
+    //this.refreshSensor();
 
   }
 
@@ -99,7 +99,7 @@ export class Station1Component implements OnDestroy, OnInit {
       }
     
      
-      this.reciverFeedback("Acionar irrigação")
+      this.reciverFeedback(this.waterCard.on)
 
     });
   }
@@ -114,10 +114,16 @@ export class Station1Component implements OnDestroy, OnInit {
       console.log("Water card = "+this.waterCard.on)
       this.station1Service.setStation(this.stations[0]);
     }
-    else {
+    else if(res) {
+       
       this.showToastInformations();
-     
+      this.stations[0].irrigation = true;
+      console.log("Water card = "+this.waterCard.on)
       //this.refreshSensor();
+    }
+    else{
+      this.stations[0].irrigation = false;
+      console.log("Water card = "+this.waterCard.on)
     }
 
   }
@@ -178,10 +184,10 @@ export class Station1Component implements OnDestroy, OnInit {
   }
 
   //#################### BUTTON ###########
-
+/*
   countDownDate = 0;
   countDown = 0;
-  /*
+  
   getStatus(){
     if(this.title == "Reload informations"){
       this.on = !this.on;
