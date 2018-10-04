@@ -74,8 +74,8 @@ app.get('/', function(req, res){
   });
 
 app.post('/', function(req, res){
-    res.send('Post Ola Mundo');
-    console.log("POST");
+    res.send('{ bomba : [L,D,D]}');
+    console.log(req.body);
   });
 
 
