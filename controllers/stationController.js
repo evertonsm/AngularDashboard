@@ -7,11 +7,6 @@ var { Station } = require('../models/station');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-// udp
-var dgram = require("dgram");
-var client = dgram.createSocket("udp4");
-
-var stations = [];
 
 router.get('/', (req, res) => {
     Station.find((err, docs) => {
@@ -21,10 +16,6 @@ router.get('/', (req, res) => {
     });
 });
 
-client.on("listening", function () {
-    var address = client.address();
-    console.log("server listening " + address.address + ":" + address.port);
-});
 
 router.get('/:name', (req, res) => {
 

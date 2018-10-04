@@ -6,7 +6,7 @@ const bodyparser = require ('body-parser');
 
 const cors = require ('cors');
 const { mongoose } = require('./db.js');
-const {udp} = require('./udp.js');
+//const {udp} = require('./udp.js');
 
 
 var triggerController = require('./controllers/triggerController.js');
