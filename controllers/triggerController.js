@@ -102,7 +102,9 @@ router.post('/', (req, res) => {
                 console.log('Busca feita com sucesso!')
 
                 this.stations = result;
-
+                console.log('Bomba = '+this.stations[0].name+', Status = '+this.stations[0].irrigation)
+                console.log('Bomba = '+this.stations[1].name+', Status = '+this.stations[1].irrigation)
+                console.log('Bomba = '+this.stations[2].name+', Status = '+this.stations[2].irrigation)
                 var b1 = this.stations[0].irrigation;
                 var b2 = this.stations[1].irrigation;
                 var b3 = this.stations[2].irrigation;
@@ -120,7 +122,8 @@ router.post('/', (req, res) => {
                     1 1 0
                     1 1 1
                 */
-                b1 = false;
+                b2 = false;
+                b3 = false;
                 if (b1 == false && b2 == false && b3 == false)
                     //var ack = new Buffer("[D,D,D]");
                     var json = {"bomba":["D","D","D"]};

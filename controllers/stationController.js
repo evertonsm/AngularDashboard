@@ -42,16 +42,16 @@ router.post('/', (req, res) => {
         humidity: req.body.humidity
     });
 
-    st.save((err, doc) => {
-        if (!err) { console.log("Botão inserido no Banco"); }
-        else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
-    });
+    //st.save((err, doc) => {
+    //    if (!err) { console.log("Botão inserido no Banco"); }
+    //    else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
+    //});
 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("dashboard");
         //
-        dbo.collection("stations").findOne({ name: req.body.name }, { sort: { _id: -1 } }, function (err, result) {
+        dbo.collection("stations").findOne({ name: req.body.name }, function (err, result) {
             if (err) throw err;
             console.log('Resultado da busca = ' + result._id);
 
