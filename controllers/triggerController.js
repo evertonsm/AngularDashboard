@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 
     input = JSON.parse(input)
 
-    console.log("Bomba = "+estado_bomba);
+    console.log("Humidade = "+input.humidity);
     var estado = true;
 
     if(input.bomba == "Desligado") estado = false;
