@@ -54,13 +54,16 @@ router.post('/', (req, res) => {
     var input = JSON.stringify(req.body)
     var aux = input;
     input = input.substr(2, input.length - 7)
-    var estado_bomba = aux.substr(22, input.length - 7);
+    var estado_bomba = aux.substring(58, 65);
 
     input = input.replace(/\\/g, '');
 
     input = JSON.parse(input)
 
     console.log("Bomba = "+estado_bomba);
+    var estado = true;
+
+    if(input.bomba == "Desligado") estado = false;
 
     if (input.name == '0') {
         console.log("Tentando conexao")
@@ -78,7 +81,7 @@ router.post('/', (req, res) => {
                 name: input.name,
                 aDate: new Date(),
                 humidity: input.humidity,
-                irrigation: true,
+                irrigation: estado,
             });
 
             /*
@@ -150,9 +153,8 @@ router.post('/', (req, res) => {
                     var json = { "bomba": ["L", "L", "L"] };
 
                 // mandar para o bueno o JSON
-                console.log("Enviando: " + JSON.stringify(json))
                 db.close();
-                res.json(json);
+                res.send(JSON.stringify(json));
 
             });
 
