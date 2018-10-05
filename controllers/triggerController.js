@@ -62,25 +62,100 @@ router.post('/', (req, res) => {
         console.log("Tentando conexao")
     }
     else {
-	
-        var b = true;
 
-        if (input.bomba == 'Desligado') b = false;
 
-        var st2 = new Station({
-            name: input.name,
-            aDate: new Date(),
-            humidity: input.humidity,
-            irrigation: b,
-        });
+        MongoClient.connect(url, function (err, db) {
+            if (err) throw err;
+            var dbo = db.db("dashboard");
 
-        st2.save((err, doc) => {
-            if (!err) { console.log("Medida inserida no Banco"); }
-            else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
+            //var market = dbo.collection("stations").findOne({ name: req.body.name }, { sort: { aDate: -1 } });
+
+            var st2 = new Station({
+                name: input.name,
+                aDate: new Date(),
+                humidity: input.humidity,
+                irrigation: market.bomba,
+            });
+
+            st2.save((err, doc) => {
+                if (!err) { console.log("Medida inserida no Banco"); }
+                else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
+            });
+
+
+           var station_1 = dbo.collection("stations").findOne({ name: "1" }, { sort: { aDate: -1 } }).toArray();
+           var station_2 = dbo.collection("stations").findOne({ name: "2" }, { sort: { aDate: -1 } }).toArray();
+           var station_3 = dbo.collection("stations").findOne({ name: "3" }, { sort: { aDate: -1 } }).toArray();
+           
+           console.log('Estado da bomba 1 = '+station_1.irrigation)
+
+           var b1 = station_1.irrigation;
+           var b2 = station_1.irrigation;
+           var b3 = station_1.irrigation;
+
+
+                /*
+                // possibilidades da bomba
+                
+                    0 0 0
+                    0 0 1
+                    0 1 0
+                    0 1 1
+                    1 0 0
+                    1 0 1
+                    1 1 0
+                    1 1 1
+                */
+
+                if (b1 == false && b2 == false && b3 == false)
+                    //var ack = new Buffer("[D,D,D]");
+                    var json = { "bomba": ["D", "D", "D"] };
+                else if (b1 == false && b2 == false && b3 == true)
+                    //var ack = new Buffer("[D,D,L]");
+                    var json = { "bomba": ["D", "D", "L"] };
+                else if (b1 == false && b2 == true && b3 == false)
+                    // var ack = new Buffer("[D,L,D]");
+                    var json = { "bomba": ["D", "L", "D"] };
+              
+                 else if (b1 == false && b2 == true && b3 == true)
+              
+                    // var ack = new Buffer("[D,L,L]");
+              
+                     var json = { "bomba": ["D", "L", "L"] };
+              
+                else if (b1 == true && b2 == false && b3 == false)
+              
+                    // var ack = new Buffer("[L,D,D]");
+              
+                    var json = { "bomba": ["L", "D", "D"] };
+                else if (b1 == true && b2 == false && b3 == true)
+                    // var ack = new Buffer("[L,D,L]");
+                    var json = { "bomba": ["L", "D", "L"] };
+                else if (b1 == true && b2 == true && b3 == false)
+                    // var ack = new Buffer("[L,L,D]");
+                    var json = { "bomba": ["L", "L", "D"] };
+                else if (b1 == true && b2 == true && b3 == true)
+                    // var ack = new Buffer("[L,L,L]");
+                    var json = { "bomba": ["L", "L", "L"] };
+
+                // mandar para o bueno o JSON
+                console.log("Enviando: " + JSON.stringify(json))
+                res.json(json);
+
+
+            });
+
         });
 
     }
-    /*
+
+});
+
+module.exports = router;
+
+
+
+/*
     if(input.name == '0'){
      console.log("Tentando conexao")
     }
@@ -119,73 +194,3 @@ router.post('/', (req, res) => {
       });
     }
 */
-
-
-    MongoClient.connect(url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("dashboard");
-
-        this.stations = dbo.collection("stations").find().toArray(function (err, result) {
-            if (err) throw err;
-
-            //console.log('Busca feita com sucesso!')
-
-            this.stations = result;
-
-
-            db.close();
-
-            var b1 = this.stations[0].irrigation;
-            var b2 = this.stations[1].irrigation;
-            var b3 = this.stations[2].irrigation;
-
-            /*
-            // possibilidades da bomba
-            
-                0 0 0
-                0 0 1
-                0 1 0
-                0 1 1
-                1 0 0
-                1 0 1
-                1 1 0
-                1 1 1
-            */
-
-            if (b1 == false && b2 == false && b3 == false)
-                //var ack = new Buffer("[D,D,D]");
-                var json = { "bomba": ["D", "D", "D"] };
-            else if (b1 == false && b2 == false && b3 == true)
-                //var ack = new Buffer("[D,D,L]");
-                var json = { "bomba": ["D", "D", "L"] };
-            else if (b1 == false && b2 == true && b3 == false)
-                // var ack = new Buffer("[D,L,D]");
-                var json = { "bomba": ["D", "L", "D"] };
-            else if (b1 == false && b2 == true && b3 == true)
-                // var ack = new Buffer("[D,L,L]");
-                var json = { "bomba": ["D", "L", "L"] };
-            else if (b1 == true && b2 == false && b3 == false)
-                // var ack = new Buffer("[L,D,D]");
-                var json = { "bomba": ["L", "D", "D"] };
-            else if (b1 == true && b2 == false && b3 == true)
-                // var ack = new Buffer("[L,D,L]");
-                var json = { "bomba": ["L", "D", "L"] };
-            else if (b1 == true && b2 == true && b3 == false)
-                // var ack = new Buffer("[L,L,D]");
-                var json = { "bomba": ["L", "L", "D"] };
-            else if (b1 == true && b2 == true && b3 == true)
-                // var ack = new Buffer("[L,L,L]");
-                var json = { "bomba": ["L", "L", "L"] };
-
-            // mandar para o bueno o JSON
-            console.log("Enviando: " + JSON.stringify(json))
-            res.json(json);
-
-
-        });
-
-    });
-
-});
-
-module.exports = router;

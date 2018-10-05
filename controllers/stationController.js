@@ -50,13 +50,17 @@ router.post('/', (req, res) => {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("dashboard");
+        var market = dbo.collection("stations").findOne({name: req.body.name}, {sort: {aDate: -1}});
+        dbo.collection("stations").update(market._id, {$set: { irrigation: req.body.irrigation }});
+        
+        /*
         dbo.collection("stations").updateOne(
             { name: st.name },
             { $set: { irrigation: req.body.irrigation } },
             function (err, result) {
                 if (err) throw err;
-               }).sort({_id:1});
-
+               });
+        */
     });
 
 });
