@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 var { Trigger } = require('../models/trigger');
-var { Station} = require('../models/station')
+var { Station } = require('../models/station')
 var ObjectId = require('mongoose').Types.ObjectId;
 
 // variaveis do MongoDB
@@ -52,20 +52,20 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
     var input = JSON.stringify(req.body)
-    input = input.substr(2,input.length -7)
+    input = input.substr(2, input.length - 7)
     input = input.replace(/\\/g, '');
 
-    input  = JSON.parse(input)
+    input = JSON.parse(input)
     console.log(input);
-    
-    if(input.name == '0'){
+
+    if (input.name == '0') {
         console.log("Tentando conexao")
-       }
+    }
     else {
-       
+
         var b = true;
 
-        if(input.bomba == 'Desligado') b = false;
+        if (input.bomba == 'Desligado') b = false;
 
         var st = new Station({
             name: input.name,
@@ -73,12 +73,12 @@ router.post('/', (req, res) => {
             humidity: input.humidity,
             irrigation: b,
         });
-    }
-    st.save((err,doc)=>{
-        if(!err) { console.log("Medida inserida no Banco");}
-        else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
-    });
 
+        st.save((err, doc) => {
+            if (!err) { console.log("Medida inserida no Banco"); }
+            else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
+        });
+    }
     /*
     if(input.name == '0'){
      console.log("Tentando conexao")
@@ -118,7 +118,7 @@ router.post('/', (req, res) => {
       });
     }
 */
-   
+
 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -179,8 +179,8 @@ router.post('/', (req, res) => {
             // mandar para o bueno o JSON
             console.log("Enviando: " + JSON.stringify(json))
             res.json(json);
-            
-	
+
+
         });
 
     });
