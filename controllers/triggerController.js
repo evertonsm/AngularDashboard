@@ -52,14 +52,15 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
     var input = JSON.stringify(req.body)
+    var aux = input;
     input = input.substr(2, input.length - 7)
+    var estado_bomba = aux.substr(11, input.length - 7);
+
     input = input.replace(/\\/g, '');
 
     input = JSON.parse(input)
 
-    console.log("Input = "+input.irrigation);
-    console.log("Input = "+JSON.stringify(req.body));
-    console.log("Input = "+input.name);
+    console.log("Bomba = "+estado_bomba);
 
     if (input.name == '0') {
         console.log("Tentando conexao")
