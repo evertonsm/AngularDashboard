@@ -79,7 +79,7 @@ app.post('/', function(req, res){
     json = json.replace(/\\/g, '');
 
     json  = JSON.parse(json)
-    console.log(json.bomba);
+    console.log("INDEX POST = " + json.bomba);
 
     res.send('{ bomba : [L,D,D]}');
 

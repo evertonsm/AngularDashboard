@@ -50,23 +50,23 @@ router.put('/:id', (req, res) => {
 */
 router.post('/', (req, res) => {
 
-    var json = JSON.stringify(req.body)
-    json = json.substr(2,json.length -7)
-    json = json.replace(/\\/g, '');
+    var input = JSON.stringify(req.body)
+    input = input.substr(2,input.length -7)
+    input = input.replace(/\\/g, '');
 
-    json  = JSON.parse(json)
-    console.log(json.bomba);
-
-    // manda pro banco
+    input  = JSON.parse(input)
+    console.log(input);
     /*
-    MongoClient.connect(url, function (err, db) {
+    if(input.name == '0'){
+     console.log("Tentando conexao")
+    }
+    else {
+      MongoClient.connect(url, function (err, db) {
 
         if (err) throw err;
         var dbo = db.db("dashboard");
 
-        var json = JSON.parse(req)
-
-        var bomba = json.bomba;
+        var bomba = input.bomba;
         var irrigation_aux = false;
         if (bomba == "Ligado") {
             irrigation_aux = true;
@@ -76,10 +76,10 @@ router.post('/', (req, res) => {
         }
 
         dbo.collection("stations").updateOne(
-            { name: json.name },
+            { name: input.name },
             {
                 $set: {
-                    humidity: json.humidity,
+                    humidity: input.humidity,
                     irrigation: irrigation_aux
                 }
             },
@@ -90,11 +90,11 @@ router.post('/', (req, res) => {
                 db.close();
 
             });
+    
 
-
-    });
-    */
-
+      });
+    }
+*/
 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -103,7 +103,7 @@ router.post('/', (req, res) => {
         this.stations = dbo.collection("stations").find().toArray(function (err, result) {
             if (err) throw err;
 
-            console.log('Busca feita com sucesso!')
+            //console.log('Busca feita com sucesso!')
 
             this.stations = result;
 
@@ -153,8 +153,8 @@ router.post('/', (req, res) => {
                 var json = { "bomba": ["L", "L", "L"] };
 
             // mandar para o bueno o JSON
-            
-            res.send('{ bomba : [L,D,D]}');
+            console.log("Enviando: " + JSON.stringify(json))
+            res.json(json);
             
 	
         });
