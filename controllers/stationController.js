@@ -43,15 +43,27 @@ router.post('/', (req, res) => {
     });
 
     st.save((err,doc)=>{
-        if(!err) { console.log("Botão atualizadao no Banco");}
+        if(!err) { console.log("Botão atualizado no Banco");}
         else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
     });
     
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("dashboard");
-        var market = dbo.collection("stations").findOne({name: req.body.name}, {sort: {aDate: -1}});
-        dbo.collection("stations").update(market._id, {$set: { irrigation: req.body.irrigation }});
+	//
+        dbo.collection("stations").findOne({name: req.body.name}, {sort: {aDate: -1}},function(err,result)
+	{
+		if(err) throw err;
+		console.log('Resultado da busca = '+result._id);
+
+  		dbo.collection("stations").updateOne({_id: result._id}, {$set: { irrigation: req.body.irrigation }},
+            	function (err, result) {
+                	if (err) throw err;
+
+			console.log('Deu certo a atualização!');
+               	});
+	});
+     
         
         /*
         dbo.collection("stations").updateOne(

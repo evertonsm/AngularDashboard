@@ -60,6 +60,8 @@ router.post('/', (req, res) => {
 
     if (input.name == '0') {
         console.log("Tentando conexao")
+ 	var json = { "bomba": ["D", "D", "D"] };
+        res.send(JSON.stringify(json));
     }
     else {
 
@@ -68,7 +70,7 @@ router.post('/', (req, res) => {
             if (err) throw err;
             var dbo = db.db("dashboard");
 
-            //var market = dbo.collection("stations").findOne({ name: req.body.name }, { sort: { aDate: -1 } });
+            var market = dbo.collection("stations").findOne({ name: req.body.name }, { sort: { aDate: -1 } });
 
             var st2 = new Station({
                 name: input.name,
@@ -82,72 +84,90 @@ router.post('/', (req, res) => {
                 else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
             });
 
+	   var station_1 = null;
+	   var station_2 = null;
+	   var station_3 = null;
+           dbo.collection("stations").findOne({ name: "1" }, { $orderby: { "_id": -1 } }, function(err,result)
+	  {
+		if(err) throw err;
+		station_1 = result;
+		console.log('Estado da bomba 1 = '+result.irrigation)
+ 		dbo.collection("stations").findOne({ name: "2" }, { sort: { aDate: -1 } }, function(err,result)
+	  	{
+			if(err) throw err;
+			station_2 = result;
+			dbo.collection("stations").findOne({ name: "3" }, { sort: { aDate: -1 } }, function(err,result)
+	  		{
+				if(err) throw err;
+				station_3 = result;
 
-           var station_1 = dbo.collection("stations").findOne({ name: "1" }, { sort: { aDate: -1 } }).toArray();
-           var station_2 = dbo.collection("stations").findOne({ name: "2" }, { sort: { aDate: -1 } }).toArray();
-           var station_3 = dbo.collection("stations").findOne({ name: "3" }, { sort: { aDate: -1 } }).toArray();
-           
-           console.log('Estado da bomba 1 = '+station_1.irrigation)
+           			console.log('Estado da bomba 1 = '+station_1.irrigation)
 
-           var b1 = station_1.irrigation;
-           var b2 = station_1.irrigation;
-           var b3 = station_1.irrigation;
-
-
-                /*
-                // possibilidades da bomba
-                
-                    0 0 0
-                    0 0 1
-                    0 1 0
-                    0 1 1
-                    1 0 0
-                    1 0 1
-                    1 1 0
-                    1 1 1
-                */
-
-                if (b1 == false && b2 == false && b3 == false)
-                    //var ack = new Buffer("[D,D,D]");
-                    var json = { "bomba": ["D", "D", "D"] };
-                else if (b1 == false && b2 == false && b3 == true)
-                    //var ack = new Buffer("[D,D,L]");
-                    var json = { "bomba": ["D", "D", "L"] };
-                else if (b1 == false && b2 == true && b3 == false)
-                    // var ack = new Buffer("[D,L,D]");
-                    var json = { "bomba": ["D", "L", "D"] };
-              
-                 else if (b1 == false && b2 == true && b3 == true)
-              
-                    // var ack = new Buffer("[D,L,L]");
-              
-                     var json = { "bomba": ["D", "L", "L"] };
-              
-                else if (b1 == true && b2 == false && b3 == false)
-              
-                    // var ack = new Buffer("[L,D,D]");
-              
-                    var json = { "bomba": ["L", "D", "D"] };
-                else if (b1 == true && b2 == false && b3 == true)
-                    // var ack = new Buffer("[L,D,L]");
-                    var json = { "bomba": ["L", "D", "L"] };
-                else if (b1 == true && b2 == true && b3 == false)
-                    // var ack = new Buffer("[L,L,D]");
-                    var json = { "bomba": ["L", "L", "D"] };
-                else if (b1 == true && b2 == true && b3 == true)
-                    // var ack = new Buffer("[L,L,L]");
-                    var json = { "bomba": ["L", "L", "L"] };
-
-                // mandar para o bueno o JSON
-                console.log("Enviando: " + JSON.stringify(json))
-                res.json(json);
+		   		var b1 = station_1.irrigation;
+				   var b2 = station_1.irrigation;
+				   var b3 = station_1.irrigation;
 
 
-            });
+					/*
+					// possibilidades da bomba
+				
+					    0 0 0
+					    0 0 1
+					    0 1 0
+					    0 1 1
+					    1 0 0
+					    1 0 1
+					    1 1 0
+					    1 1 1
+					*/
+
+					if (b1 == false && b2 == false && b3 == false)
+					    //var ack = new Buffer("[D,D,D]");
+					    var json = { "bomba": ["D", "D", "D"] };
+					else if (b1 == false && b2 == false && b3 == true)
+					    //var ack = new Buffer("[D,D,L]");
+					    var json = { "bomba": ["D", "D", "L"] };
+					else if (b1 == false && b2 == true && b3 == false)
+					    // var ack = new Buffer("[D,L,D]");
+					    var json = { "bomba": ["D", "L", "D"] };
+				      
+					 else if (b1 == false && b2 == true && b3 == true)
+				      
+					    // var ack = new Buffer("[D,L,L]");
+				      
+					     var json = { "bomba": ["D", "L", "L"] };
+				      
+					else if (b1 == true && b2 == false && b3 == false)
+				      
+					    // var ack = new Buffer("[L,D,D]");
+				      
+					    var json = { "bomba": ["L", "D", "D"] };
+					else if (b1 == true && b2 == false && b3 == true)
+					    // var ack = new Buffer("[L,D,L]");
+					    var json = { "bomba": ["L", "D", "L"] };
+					else if (b1 == true && b2 == true && b3 == false)
+					    // var ack = new Buffer("[L,L,D]");
+					    var json = { "bomba": ["L", "L", "D"] };
+					else if (b1 == true && b2 == true && b3 == true)
+					    // var ack = new Buffer("[L,L,L]");
+					    var json = { "bomba": ["L", "L", "L"] };
+
+					// mandar para o bueno o JSON
+					console.log("Enviando: " + JSON.stringify(json))
+					res.json(json);
+
+				  });
+
+	  	});
+
+ 		
+
+	  });
+  
 
         });
 
-    }
+    };
 
 });
 
