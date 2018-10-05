@@ -123,34 +123,34 @@ router.post('/', (req, res) => {
                 b1 = false;
                 if (b1 == false && b2 == false && b3 == false)
                     //var ack = new Buffer("[D,D,D]");
-                    var json = { "bomba": ["D", "D", "D"] };
+                    var json = {"bomba":["D","D","D"]};
                 else if (b1 == false && b2 == false && b3 == true)
                     //var ack = new Buffer("[D,D,L]");
-                    var json = { "bomba": ["D", "D", "L"] };
+                    var json = {"bomba":["D","D","L"]};
                 else if (b1 == false && b2 == true && b3 == false)
                     // var ack = new Buffer("[D,L,D]");
-                    var json = { "bomba": ["D", "L", "D"] };
+                    var json = {"bomba":["D","L","D"]};
 
                 else if (b1 == false && b2 == true && b3 == true)
 
                     // var ack = new Buffer("[D,L,L]");
 
-                    var json = { "bomba": ["D", "L", "L"] };
+                    var json = {"bomba":["D","L","L"]};
 
                 else if (b1 == true && b2 == false && b3 == false)
 
                     // var ack = new Buffer("[L,D,D]");
 
-                    var json = { "bomba": ["L", "D", "D"] };
+                    var json = {"bomba":["L","D","D"]};
                 else if (b1 == true && b2 == false && b3 == true)
                     // var ack = new Buffer("[L,D,L]");
-                    var json = { "bomba": ["L", "D", "L"] };
+                    var json = {"bomba":["L","D","L"]};
                 else if (b1 == true && b2 == true && b3 == false)
                     // var ack = new Buffer("[L,L,D]");
-                    var json = { "bomba": ["L", "L", "D"] };
+                    var json = {"bomba":["L","L","D"]};
                 else if (b1 == true && b2 == true && b3 == true)
                     // var ack = new Buffer("[L,L,L]");
-                    var json = { "bomba": ["L", "L", "L"] };
+                    var json = {"bomba":["L","L","L"]};
 
                 // mandar para o bueno o JSON
                 db.close();
