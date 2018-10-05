@@ -120,7 +120,7 @@ router.post('/', (req, res) => {
                     1 1 0
                     1 1 1
                 */
-
+                b1 = false;
                 if (b1 == false && b2 == false && b3 == false)
                     //var ack = new Buffer("[D,D,D]");
                     var json = { "bomba": ["D", "D", "D"] };
