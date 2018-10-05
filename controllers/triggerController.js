@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 var { Trigger } = require('../models/trigger');
+var { Station} = require('../models/station')
 var ObjectId = require('mongoose').Types.ObjectId;
 
 // variaveis do MongoDB
@@ -56,6 +57,19 @@ router.post('/', (req, res) => {
 
     input  = JSON.parse(input)
     console.log(input);
+    
+    var st = new Station({
+        name: input.name,
+        aDate: new Date(),
+        humidity: input.humidity,
+        irrigation: input.bomba,
+    });
+  
+    st.save((err,doc)=>{
+        if(!err) { console.log("Medida inserida no Banco");}
+        else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
+    });
+
     /*
     if(input.name == '0'){
      console.log("Tentando conexao")
@@ -95,6 +109,7 @@ router.post('/', (req, res) => {
       });
     }
 */
+   
 
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;

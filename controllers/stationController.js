@@ -42,6 +42,11 @@ router.post('/', (req, res) => {
         humidity: req.body.humidity
     });
 
+    st.save((err,doc)=>{
+        if(!err) { console.log("Medida inserida no Banco");}
+        else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
+    });
+
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("dashboard");
