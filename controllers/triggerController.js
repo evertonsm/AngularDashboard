@@ -56,7 +56,10 @@ router.post('/', (req, res) => {
     input = input.replace(/\\/g, '');
 
     input = JSON.parse(input)
+
     console.log("Input = "+input.irrigation);
+    console.log("Input = "+JSON.stringify(req.body));
+    console.log("Input = "+input.name);
 
     if (input.name == '0') {
         console.log("Tentando conexao")
@@ -74,7 +77,7 @@ router.post('/', (req, res) => {
                 name: input.name,
                 aDate: new Date(),
                 humidity: input.humidity,
-                irrigation: market.bomba,
+                irrigation: true,
             });
 
             /*
