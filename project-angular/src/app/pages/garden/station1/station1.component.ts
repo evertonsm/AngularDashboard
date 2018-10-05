@@ -89,7 +89,7 @@ export class Station1Component implements OnDestroy, OnInit {
     this.station1Service.getStation("1").subscribe((res) => {
       this.stations = res;
       this.irrigation = this.stations[0].irrigation;
-      
+      console.log('Ultimo estado encontrado! Bomba 1 = '+this.irrigation)
       if (this.irrigation == true) {
         this.waterCard.on = true;
         
