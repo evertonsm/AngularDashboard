@@ -60,7 +60,6 @@ router.post('/', (req, res) => {
 
     input = JSON.parse(input)
 
-    console.log("Humidade = "+input.humidity.toArray());
     var estado = true;
 
     if(input.bomba == "Desligado") estado = false;
@@ -80,9 +79,16 @@ router.post('/', (req, res) => {
             var st2 = new Station({
                 name: input.name,
                 aDate: new Date(),
-                humidity: input.humidity.toArray(),
+                humidity: input.humidity,
                 irrigation: estado,
             });
+
+            dbo.collection("stations").updateOne({ name: input.name  }, { $set: { humidity: input.humidity } },
+                function (err, result) {
+                    if (err) throw err;
+
+                    console.log('Deu certo a atualização do Bueno!');
+                });
 
             /*
             dbo.collection("stations").updateOne(
