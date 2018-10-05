@@ -62,22 +62,23 @@ router.post('/', (req, res) => {
         console.log("Tentando conexao")
     }
     else {
-
+	
         var b = true;
 
         if (input.bomba == 'Desligado') b = false;
 
-        var st = new Station({
+        var st2 = new Station({
             name: input.name,
             aDate: new Date(),
             humidity: input.humidity,
             irrigation: b,
         });
 
-        st.save((err, doc) => {
+        st2.save((err, doc) => {
             if (!err) { console.log("Medida inserida no Banco"); }
             else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
         });
+
     }
     /*
     if(input.name == '0'){

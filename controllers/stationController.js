@@ -43,10 +43,10 @@ router.post('/', (req, res) => {
     });
 
     st.save((err,doc)=>{
-        if(!err) { console.log("Medida inserida no Banco");}
+        if(!err) { console.log("Botão atualizadao no Banco");}
         else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
     });
-
+    
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("dashboard");
@@ -55,18 +55,7 @@ router.post('/', (req, res) => {
             { $set: { irrigation: req.body.irrigation } },
             function (err, result) {
                 if (err) throw err;
-               });
-
-        this.stations = dbo.collection("stations").find().toArray(function (err, result) {
-            if (err) throw err;
-
-            this.stations = result;
-
-            db.close();
-
-
-        });
-
+               }).sort({_id:1});
 
     });
 
