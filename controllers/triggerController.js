@@ -51,6 +51,7 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
     var json = JSON.parse(req)
+    //console.log(typeof json);
     console.log(json);
 
     // manda pro banco
@@ -150,12 +151,9 @@ router.post('/', (req, res) => {
 
             // mandar para o bueno o JSON
             
+            res.send('{ bomba : [L,D,D]}');
             
-            res.send(JSON.stringify(json), function (err, bytes) {
-                if (!err) { console.log("Mensagem enviada!!." + json.bomba); }
-                else { console.log('Error in Retriving Sensors:' + JSON.stringify(err, undefined, 2)); }
-            });
-
+	
         });
 
     });

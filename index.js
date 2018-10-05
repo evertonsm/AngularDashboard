@@ -74,8 +74,16 @@ app.get('/', function(req, res){
   });
 
 app.post('/', function(req, res){
+    var json = JSON.stringify(req.body)
+    json = json.substr(2,json.length -7)
+    json = json.replace(/\\/g, '');
+
+    json  = JSON.parse(json)
+    console.log(json.bomba);
+
     res.send('{ bomba : [L,D,D]}');
-    console.log(req.body);
+
+
   });
 
 
