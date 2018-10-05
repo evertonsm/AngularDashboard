@@ -155,6 +155,8 @@ router.post('/', (req, res) => {
                 // mandar para o bueno o JSON
                 db.close();
                 res.send(JSON.stringify(json));
+                console.log('RESP para o BUENO = '+json.bomba)
+                
 
             });
 
