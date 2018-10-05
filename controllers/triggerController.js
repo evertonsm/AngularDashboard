@@ -58,13 +58,22 @@ router.post('/', (req, res) => {
     input  = JSON.parse(input)
     console.log(input);
     
-    var st = new Station({
-        name: input.name,
-        aDate: new Date(),
-        humidity: input.humidity,
-        irrigation: input.bomba,
-    });
-  
+    if(input.name == '0'){
+        console.log("Tentando conexao")
+       }
+    else {
+       
+        var b = true;
+
+        if(input.bomba == 'Desligado') b = false;
+
+        var st = new Station({
+            name: input.name,
+            aDate: new Date(),
+            humidity: input.humidity,
+            irrigation: b,
+        });
+    }
     st.save((err,doc)=>{
         if(!err) { console.log("Medida inserida no Banco");}
         else{ console.log('Error in Stattion Save:' + JSON.stringify(err,undefined,2));}        
