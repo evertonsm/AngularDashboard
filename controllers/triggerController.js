@@ -50,9 +50,12 @@ router.put('/:id', (req, res) => {
 */
 router.post('/', (req, res) => {
 
-    var json = JSON.parse(req)
-    //console.log(typeof json);
-    console.log(json);
+    var json = JSON.stringify(req.body)
+    json = json.substr(2,json.length -7)
+    json = json.replace(/\\/g, '');
+
+    json  = JSON.parse(json)
+    console.log(json.bomba);
 
     // manda pro banco
     /*
