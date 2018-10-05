@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
     var input = JSON.stringify(req.body)
     var aux = input;
     input = input.substr(2, input.length - 7)
-    var estado_bomba = aux.substr(11, input.length - 7);
+    var estado_bomba = aux.substr(22, input.length - 7);
 
     input = input.replace(/\\/g, '');
 
