@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 
     input = JSON.parse(input)
 
-    console.log("Humidade = "+input.humidity);
+    console.log("Humidade = "+input.humidity.toArray());
     var estado = true;
 
     if(input.bomba == "Desligado") estado = false;
@@ -80,7 +80,7 @@ router.post('/', (req, res) => {
             var st2 = new Station({
                 name: input.name,
                 aDate: new Date(),
-                humidity: input.humidity,
+                humidity: input.humidity.toArray(),
                 irrigation: estado,
             });
 
