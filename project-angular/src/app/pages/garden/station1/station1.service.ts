@@ -50,7 +50,7 @@ export class Station1Service {
 
   setStation(station2: Station) {
 
-    
+
 
     this.http.post(this.baseURL + name,
       {
