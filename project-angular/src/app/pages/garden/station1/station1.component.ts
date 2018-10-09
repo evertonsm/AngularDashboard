@@ -119,7 +119,6 @@ export class Station1Component implements OnDestroy, OnInit {
       this.showToastInformations();
       this.stations[0].irrigation = true;
       console.log("Water card = "+this.waterCard.on)
-      this.refreshSensor();
     }
     else{
       this.stations[0].irrigation = false;
