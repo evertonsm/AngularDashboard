@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 import { CultivoComponent } from './cultivo/cultivo.component';
+import { ContatoComponent } from './contato/contato.component';
 
 
 const routes: Routes = [{
@@ -28,6 +29,10 @@ const routes: Routes = [{
   }, {
     path: 'projeto',
     component: ProjetoComponent,
+  },
+  {
+    path: 'contato',
+    component: ContatoComponent,
   },
   /*{
     path: 'charts',

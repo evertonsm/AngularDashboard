@@ -196,6 +196,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: "Contate-nos",
-    icon: "nb-email"
+    icon: "nb-email",
+    link: "/pages/contato"
   }
 ];
