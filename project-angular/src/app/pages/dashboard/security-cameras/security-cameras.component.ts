@@ -20,7 +20,7 @@ export class SecurityCamerasComponent {
   userMenu = [{
     title: 'Profile',
   }, {
-    title: 'Log out',
+    title: 'Sair',
   }];
 
   isSingleView = false;

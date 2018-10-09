@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
   users: User;
 
 
-  //userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
-  userMenu = [{ title: 'Log out' }];
+  //userMenu = [{ title: 'Profile' }, { title: 'Sair' }];
+  userMenu = [{ title: 'Sair' }];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
       )
       .subscribe(title => {
                
-        if(title == 'Log out'){
+        if(title == 'Sair'){
           localStorage.clear()
           this.router.navigate(['auth/login'])
           window.location.reload();
