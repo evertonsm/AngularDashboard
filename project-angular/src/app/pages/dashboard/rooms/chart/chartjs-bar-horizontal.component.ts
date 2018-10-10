@@ -88,12 +88,15 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
           this.humidity = 0.0;
           if(this.station[0] != null){
             for(x in this.station[0].humidity){
+              
               this.humidity += this.station[0].humidity[x];          
             } 
             x++;
             this.humidity = this.humidity/x;
             x = 0;
           }
+
+          if(st == 2) console.log('Humidity = '+this.humidity)
           
           if(st!= 4) this.stationSelected(this.humidity, 0)
 
@@ -108,7 +111,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
   stationSelected(humidity, tp){
     if(tp == 0){
       this.data = {
-        labels: ['Umidade'],
+        labels: ['Humidade'],
         datasets: [{
             label: 'Média',
             
