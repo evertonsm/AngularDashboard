@@ -10,6 +10,9 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProjetoModule } from './projeto/projeto.module';
 import { ProjetoComponent } from './projeto/projeto.component';
 import { CultivoComponent } from './cultivo/cultivo.component';
+import { ContatoComponent } from './contato/contato.component';
+import { ContatoModule} from './contato/contato.module';
+
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -23,12 +26,14 @@ const PAGES_COMPONENTS = [
     MiscellaneousModule,
     GardenModule,
     CultivoModule,
-    ProjetoModule
+    ProjetoModule,
+    ContatoModule,
   ],
   declarations: [
     ...PAGES_COMPONENTS,
     ProjetoComponent,
     CultivoComponent,
+    ContatoComponent,
   ],
 })
 export class PagesModule {

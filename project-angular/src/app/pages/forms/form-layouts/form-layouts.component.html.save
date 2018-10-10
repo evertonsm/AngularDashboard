@@ -95,8 +95,8 @@
       <nb-card-body>
         <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
