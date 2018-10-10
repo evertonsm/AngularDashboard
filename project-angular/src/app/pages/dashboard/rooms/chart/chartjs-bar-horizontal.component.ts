@@ -117,8 +117,8 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
             
             backgroundColor: "#00f9a6",
             //backgroundColor: colors.infoLight,
-            borderWidth: 2,
-            data: [humidity, 5],
+            borderWidth: 0,
+            data: [humidity, 8],
           },
         ],
       };      
