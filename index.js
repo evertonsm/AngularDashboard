@@ -16,7 +16,7 @@ var userController = require('./controllers/userController.js')
 
 
 const app = express ();
-const port = 8000
+const port = 14002
 const ip = '131.221.243.115'
 
 // formulário vem no formato URL encoded
@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 
 /*
 const cors = require('cors');
-const whitelist = ['http://localhost:4200', 'http://example2.com'];
+const whitelist = ['http://localhost:14001', 'http://example2.com'];
 const corsOptions = {
   credentials: true, // This is important.
   origin: (origin, callback) => {
@@ -89,5 +89,5 @@ app.post('/', function(req, res){
 
 
 //adding middleware - cors
-//app.use(cors({origin: 'http://localhost:4200/#/pages/garden/station1'}));
+//app.use(cors({origin: 'http://localhost:14001/#/pages/garden/station1'}));
 

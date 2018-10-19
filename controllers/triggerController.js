@@ -8,7 +8,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-// => 131.221.243.115:8000/trigger/
+// => 131.221.243.115:14002/trigger/
 /*
 router.get('/', (req,res) => {
     Trigger.find((err,docs) =>{
