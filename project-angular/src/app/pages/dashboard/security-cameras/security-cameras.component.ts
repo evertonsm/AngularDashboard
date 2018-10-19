@@ -26,9 +26,7 @@ export class SecurityCamerasComponent {
   isSingleView = false;
 
   userIsAdm = false;
-
-  console_log(userIsAdm);
-
+  
   selectCamera(camera: any) {
     this.selectedCamera = camera;
     this.isSingleView = true;
