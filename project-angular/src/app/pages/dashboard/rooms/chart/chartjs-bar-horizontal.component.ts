@@ -111,7 +111,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
   stationSelected(humidity, tp){
     if(tp == 0){
       this.data = {
-        labels: ['Humidade'],
+        labels: ['Umidade'],
         datasets: [{
             label: 'Média',
             
