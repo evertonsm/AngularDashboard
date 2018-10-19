@@ -55,7 +55,7 @@ export class RoomsComponent implements OnDestroy {
       }
       else{
         if(roomNumber == 3){
-          this.stationName = 'Cenoura';
+          this.stationName = 'Rúcula';
         }    
     
         else{
