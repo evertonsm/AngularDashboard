@@ -25,11 +25,16 @@ export class SecurityCamerasComponent {
 
   isSingleView = false;
 
-  userIsAdm = false;
+  static userIsAdm = true;
   
   selectCamera(camera: any) {
     this.selectedCamera = camera;
     this.isSingleView = true;
+  }
+
+  getUserAdm(): boolean
+  {
+    return SecurityCamerasComponent.userIsAdm;
   }
 
 }

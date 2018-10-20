@@ -20,7 +20,8 @@ router.post('/register', function(req, res) {
     User.create({
       fullName : req.body.fullName,
       email : req.body.email,
-      password : hashedPassword
+      password : hashedPassword,
+      adm: false
     },
     function (err, user) {
       if (err) return res.status(500).send("There was a problem registering the user.")
