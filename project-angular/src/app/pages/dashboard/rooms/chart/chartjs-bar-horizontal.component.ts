@@ -76,9 +76,9 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
     var st;
     console.log(station)
     
-    if(this.stationName == "Alface") st = "1";
-    if(this.stationName == "Couve") st = "2";
-    if(this.stationName == "Rúcula") st = "3";
+    if(this.stationName == "Couve") st = "1";
+    if(this.stationName == "Rúcula") st = "2";
+    if(this.stationName == "Alface") st = "3";
     if(this.stationName == "Reservatório") st = "4";
         
     this.station1Service.getStation(st).subscribe((res)=>{

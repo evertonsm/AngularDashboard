@@ -47,15 +47,15 @@ export class RoomsComponent implements OnDestroy {
     }
 
     if(roomNumber == 1){
-      this.stationName = 'Alface';
+      this.stationName = 'Couve';
     }
     else{
       if(roomNumber == 2){
-        this.stationName = 'Couve';
+        this.stationName = 'Rúcula';
       }
       else{
         if(roomNumber == 3){
-          this.stationName = 'Rúcula';
+          this.stationName = 'Alface';
         }    
     
         else{
