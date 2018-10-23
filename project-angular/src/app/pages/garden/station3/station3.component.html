@@ -3,7 +3,8 @@
 <toaster-container [toasterconfig]="config"></toaster-container>
 <div class="row">
   <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
-    <ngx-status-card [title]="statusCard.title"
+    <ngx-status-card *ngIf="getStatusCard(statusCard.title,getUserAdm())"
+                     [title]="statusCard.title"
                      [type]="statusCard.type"
                      [on]="statusCard.on"
                      (resClick)="reciverFeedback($event)">

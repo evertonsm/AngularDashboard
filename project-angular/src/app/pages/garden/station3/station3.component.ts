@@ -29,6 +29,8 @@ export class Station3Component implements OnDestroy, OnInit{
   stations: Station[];
   irrigation = true;
   
+  static userIsAdm = false;
+
   waterCard: CardSettings = {
     title: 'Acionar Irrigação',
     iconClass: 'nb-rainy',
@@ -73,6 +75,23 @@ export class Station3Component implements OnDestroy, OnInit{
   ngOnInit(){
      this.refreshSensor();
      this.refreshIrrigation();
+  }
+
+  getStatusCard(title: string, adm: boolean): boolean
+  {
+    if(title == "Acionar Irrigação" && adm == false)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  getUserAdm():boolean
+  {
+    return Station3Component.userIsAdm;
   }
 
   refreshIrrigation(){

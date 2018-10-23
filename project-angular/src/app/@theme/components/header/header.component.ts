@@ -8,6 +8,9 @@ import { map } from 'rxjs/operators'
 import { AuthGuard } from '../../../auth-guard.service'
 import { User } from './user.model'
 import { SecurityCamerasComponent } from '../../../pages/dashboard/security-cameras/security-cameras.component'
+import {Station1Component} from '../../../pages/garden/station1/station1.component'
+import {Station2Component} from '../../../pages/garden/station2/station2.component'
+import {Station3Component} from '../../../pages/garden/station3/station3.component'
 
 @Component({
   selector: 'ngx-header',
@@ -45,11 +48,16 @@ export class HeaderComponent implements OnInit {
 
         if (data.adm == false) {
           SecurityCamerasComponent.userIsAdm = false;
+          Station1Component.userIsAdm = false;
+          Station2Component.userIsAdm = false;
+          Station3Component.userIsAdm = false;
         }
         else {
           SecurityCamerasComponent.userIsAdm = true;
+          Station1Component.userIsAdm = true;
+          Station2Component.userIsAdm = true;
+          Station3Component.userIsAdm = true;
         }
-        // else adm = false
 
       })
 

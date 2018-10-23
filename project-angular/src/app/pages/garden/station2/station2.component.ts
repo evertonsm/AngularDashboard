@@ -28,6 +28,8 @@ export class Station2Component implements OnDestroy, OnInit{
   
   stations: Station[];
   irrigation = true;
+
+  static userIsAdm = false;
   
   waterCard: CardSettings = {
     title: 'Acionar Irrigação',
@@ -74,6 +76,24 @@ export class Station2Component implements OnDestroy, OnInit{
      this.refreshSensor();
      this.refreshIrrigation();
   }
+
+  getStatusCard(title: string, adm: boolean): boolean
+  {
+    if(title == "Acionar Irrigação" && adm == false)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  getUserAdm():boolean
+  {
+    return Station2Component.userIsAdm;
+  }
+
 
   
   refreshIrrigation(){

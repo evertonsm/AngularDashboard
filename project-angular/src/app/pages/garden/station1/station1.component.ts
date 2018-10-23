@@ -26,6 +26,8 @@ export class Station1Component implements OnDestroy, OnInit {
   private alive = true;
   statusCards: string;
 
+  static userIsAdm = false;
+
   stations: Station[];
   irrigation: boolean;
   init: boolean;
@@ -84,6 +86,22 @@ export class Station1Component implements OnDestroy, OnInit {
 
   }
 
+  getStatusCard(title: string, adm: boolean): boolean
+  {
+    if(title == "Acionar Irrigação" && adm == false)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  getUserAdm():boolean
+  {
+    return Station1Component.userIsAdm;
+  }
 
   refreshSensor() {
     this.station1Service.getStation("1").subscribe((res) => {
