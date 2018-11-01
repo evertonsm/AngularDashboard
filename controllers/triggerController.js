@@ -83,6 +83,8 @@ router.post('/', (req, res) => {
                 irrigation: estado,
             });
 
+            console.log('Umidade'+input.humidity)
+
             dbo.collection("stations").updateOne({ name: input.name  }, { $set: { humidity: input.humidity } },
                 function (err, result) {
                     if (err) throw err;

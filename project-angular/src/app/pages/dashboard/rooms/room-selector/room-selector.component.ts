@@ -37,14 +37,14 @@ export class RoomSelectorComponent {
         name: { text: 'Canteiro #3', x: 320, y: 140 },
         area: { d: 'M 270 30 H 370 V 260 H 270 L 270 30' },
         border: { d: 'M 270 30 H 370 V 260 H 270 L 270 30' },
-      },
+      }/* ,
 
       {
         id: '4',
         name: { text: 'Reservatório', x: 200, y: 320 },
         area: { d: 'M 50 290 H 350 V 350 H 50 L 50 290' },
         border: { d: 'M 50 290 H 350 V 350 H 50 L 50 290' },
-      },
+      }, */
 
     ],
   };

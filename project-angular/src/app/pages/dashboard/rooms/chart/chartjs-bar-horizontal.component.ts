@@ -52,7 +52,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
           yAxes: [
             {
               gridLines: {
-                display: false,
+                display: true,
                 color: chartjs.axisLineColor,
               },
               ticks: {
@@ -113,12 +113,12 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
       this.data = {
         labels: ['Umidade'],
         datasets: [{
-            label: 'Média',
+            label: 'Porcentagem média de umidade',
             
             backgroundColor: "#00f9a6",
             //backgroundColor: colors.infoLight,
             borderWidth: 2,
-            data: [humidity, 0],
+            data: [humidity*100/80, 0],
           },
         ],
       };      

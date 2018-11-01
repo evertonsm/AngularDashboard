@@ -86,20 +86,16 @@ export class Station1Component implements OnDestroy, OnInit {
 
   }
 
-  getStatusCard(title: string, adm: boolean): boolean
-  {
-    if(title == "Acionar Irrigação" && adm == false)
-    {
+  getStatusCard(title: string, adm: boolean): boolean {
+    if (title == "Acionar Irrigação" && adm == false) {
       return false;
     }
-    else
-    {
+    else {
       return true;
     }
   }
 
-  getUserAdm():boolean
-  {
+  getUserAdm(): boolean {
     return Station1Component.userIsAdm;
   }
 
@@ -107,16 +103,16 @@ export class Station1Component implements OnDestroy, OnInit {
     this.station1Service.getStation("1").subscribe((res) => {
       this.stations = res;
       this.irrigation = this.stations[0].irrigation;
-      console.log('Ultimo estado encontrado! Bomba 1 = '+this.irrigation)
+      console.log('Ultimo estado encontrado! Bomba 1 = ' + this.irrigation)
       if (this.irrigation == true) {
         this.waterCard.on = true;
-        
+
       } else {
         this.waterCard.on = false;
-       
+
       }
-    
-     
+
+
       this.reciverFeedback(this.waterCard.on)
 
     });
@@ -128,24 +124,25 @@ export class Station1Component implements OnDestroy, OnInit {
 
       this.waterCard.on = !this.waterCard.on;
       if (this.waterCard.on == true) this.showToastWater();
+      else
+        this.showTurnOff();
       this.stations[0].irrigation = this.waterCard.on;
-      console.log("Water card = "+this.waterCard.on)
+      console.log("Water card = " + this.waterCard.on)
       this.station1Service.setStation(this.stations[0]);
     }
-    else if(res == "Atualizar Informações")
-    {
+    else if (res == "Atualizar Informações") {
       this.refreshSensor()
       this.showToastInformations();
       console.log('ATUALIZEI')
     }
-    else if(res) {
+    else if (res) {
       this.showToastInformations();
       this.stations[0].irrigation = true;
-      console.log("Water card = "+this.waterCard.on)
+      console.log("Water card = " + this.waterCard.on)
     }
-    else{
+    else {
       this.stations[0].irrigation = false;
-      console.log("Water card = "+this.waterCard.on)
+      console.log("Water card = " + this.waterCard.on)
     }
 
   }
@@ -200,40 +197,60 @@ export class Station1Component implements OnDestroy, OnInit {
     };
     this.toasterService.popAsync(toast);
   }
+  showTurnOff() {
+    this.config = new ToasterConfig({
+      positionClass: 'toast-top-right',
+      timeout: 2000,
+      newestOnTop: true,
+      tapToDismiss: true,
+      preventDuplicates: true,
+      animation: 'slideUp',
+      limit: 3,
+    });
+    const toast: Toast = {
+      type: 'red',
+      title: null,
+      body: `Válvula de Irrigação Desligada`,
+      timeout: 2000,
+      showCloseButton: false,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+    };
+    this.toasterService.popAsync(toast);
+  }
 
   clearToasts() {
     this.toasterService.clear();
   }
 
   //#################### BUTTON ###########
-/*
-  countDownDate = 0;
-  countDown = 0;
-  
-  getStatus(){
-    if(this.title == "Reload informations"){
-      this.on = !this.on;
-      //this.showToast();
-    }
-    else{
-              
-      if(this.on == false)
-        this.on = true;
+  /*
+    countDownDate = 0;
+    countDown = 0;
     
-      else{
-        this.countDown = new Date().getSeconds();
-       
-        if(this.countDownDate+10 < this.countDown || this.countDownDate > this.countDown )
-        {
-          this.on = false;
-          this.countDownDate = 0;
-          this.countDown = 0;
-        }
-        if(this.countDownDate == 0)
-          this.countDownDate = new Date().getSeconds();
-                                       
+    getStatus(){
+      if(this.title == "Reload informations"){
+        this.on = !this.on;
+        //this.showToast();
       }
-    }
-  }*/
+      else{
+                
+        if(this.on == false)
+          this.on = true;
+      
+        else{
+          this.countDown = new Date().getSeconds();
+         
+          if(this.countDownDate+10 < this.countDown || this.countDownDate > this.countDown )
+          {
+            this.on = false;
+            this.countDownDate = 0;
+            this.countDown = 0;
+          }
+          if(this.countDownDate == 0)
+            this.countDownDate = new Date().getSeconds();
+                                         
+        }
+      }
+    }*/
 
 }
