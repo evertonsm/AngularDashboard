@@ -21,10 +21,11 @@ import { Station2Service } from './pages/garden/station2/station2.service';
 import { AuthGuard } from './auth-guard.service'
 import { Station3Service } from './pages/garden/station3/station3.service';
 
+import { LogService } from '../app/pages/log/log.service'
 
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,7 +38,7 @@ import { Station3Service } from './pages/garden/station3/station3.service';
     ToasterModule.forRoot()
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard,Station1Service, Station2Service, Station3Service,
+  providers: [AuthGuard,Station1Service, Station2Service, Station3Service, LogService,
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
 })

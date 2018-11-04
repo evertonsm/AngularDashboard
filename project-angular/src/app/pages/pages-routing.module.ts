@@ -1,12 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AuthGuard} from '../auth-guard.service'
+import { AuthGuard } from '../auth-guard.service'
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 import { CultivoComponent } from './cultivo/cultivo.component';
 import { ContatoComponent } from './contato/contato.component';
+import { LogComponent } from './log/log.component';
 
 
 const routes: Routes = [{
@@ -22,7 +23,7 @@ const routes: Routes = [{
   }, {
     path: 'cultivo',
     component: CultivoComponent,
-    
+
   }, {
     path: 'maps',
     loadChildren: './maps/maps.module#MapsModule',
@@ -33,6 +34,10 @@ const routes: Routes = [{
   {
     path: 'contato',
     component: ContatoComponent,
+  },
+  {
+    path: 'log',
+    component: LogComponent
   },
   /*{
     path: 'charts',

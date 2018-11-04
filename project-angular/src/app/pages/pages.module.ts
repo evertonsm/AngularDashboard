@@ -12,6 +12,7 @@ import { ProjetoComponent } from './projeto/projeto.component';
 import { CultivoComponent } from './cultivo/cultivo.component';
 import { ContatoComponent } from './contato/contato.component';
 import { ContatoModule} from './contato/contato.module';
+import { LogComponent } from './log/log.component';
 
 
 const PAGES_COMPONENTS = [
@@ -34,6 +35,7 @@ const PAGES_COMPONENTS = [
     ProjetoComponent,
     CultivoComponent,
     ContatoComponent,
+    LogComponent,
   ],
 })
 export class PagesModule {

@@ -1,4 +1,4 @@
-export interface Station{
+export class Station{
 
     _id: string;
     name: string;

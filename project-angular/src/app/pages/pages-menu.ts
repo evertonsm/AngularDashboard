@@ -190,6 +190,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/cultivo'
   },
   {
+    title: "Log",
+    icon: "nb-title",
+    link: '/pages/log'
+  },
+  {
     title: "Projeto",
     icon:"nb-lightbulb",
     link: "/pages/projeto"
