@@ -1,0 +1,182 @@
+show collections
+show database
+show database
+show collections
+show db
+dash
+db
+show db
+show dbs
+dashboard
+db dashboard
+use dashboard
+show collections
+show dbs
+use dashboard
+show collections
+use stations
+db.stations.find()
+find()
+stations.find()
+ls
+show collections
+show dbs
+use dashboard
+ls
+show collections
+db.stations.find()
+show collections
+db.users.collections.find()
+db.users.find()
+cd .. exit
+show dbs
+use dashboard
+db.stations.find()
+cd .. exit
+show dbs
+use dashboard
+show collections
+show stations
+db.stations.find().pretty()
+db.stations.deleteMany({})
+db.stations.find().pretty()
+db.stations.insertOne({})
+db.stations.find().pretty()
+db.stations.deleteMany({})
+db.stations.insertOne({"name":"1","humidity":[10,20,3,4],"irrigation":true})
+db.stations.find().pretty()
+db.stations.insertOne({"name":"2","humidity":[4,20,3,15],"irrigation":true})
+db.stations.insertOne({"name":"3","humidity":[4,77,44,5],"irrigation":true})
+show dbs
+use dashboard
+show collections
+db.stations.find()
+db.stations.find().pretty()
+db.stations.removeMany({})
+show collections
+db.stations.removeMany({})
+db.stations.deleteMany({})
+db.stations.insertOne({name: "1",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "2",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "3",irrigation: true, humidity:[10,22,22,1]})
+db.stations.find().pretty()
+db.stations.deleteMany({})
+db.stations.insertOne({name: "3",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "2",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "1",irrigation: true, humidity:[10,22,22,1]})
+db.stations.deleteMany({})
+db.stations.insertOne({name: "1",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "",irrigation: true, humidity:[10,22,22,1]})
+db.stations.deleteMany({})
+db.stations.insertOne({name: "1",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "2",irrigation: true, humidity:[10,22,22,1]})
+db.stations.insertOne({name: "3",irrigation: true, humidity:[10,22,22,1]})
+show dbs
+use dashboard
+show collections
+db.stations.find()
+db.stations.deleteMany()
+show dbs
+use dashboard
+db.stations.find().pretty()
+db.stations.deleteMany()
+db.stations.deleteMany({})
+db.stations.insertOne({name:"1",irrigation:true,humidity:[10,22,3,1]})
+db.stations.insertOne({name:"2",irrigation:true,humidity:[10,22,3,1]})
+db.stations.insertOne({name:"3",irrigation:true,humidity:[10,22,3,1]})
+show dbs
+use dashboard
+show collections
+db.stations.find().pretty()
+use dashboard
+db.stations.updateOne({name:"2"},{$set:{irrigation:true}) }
+db.stations.updateOne({name:"2"},{$set:{irrigation:true}})
+use dashboard
+db.stations.updateOne({name:"2"},{$set:{irrigation:true}})
+db.stations.updateOne({name:"3"},{$set:{irrigation:true}})
+use dashboard
+db.stations.find().pretty()
+db.users.find().pretty()
+use dasboard
+db.stations.insertOne({name:"1,humidity:[10,33,22,11],irrigation:true})
+db.stations.insertOne({name:"1",humidity:[10,33,22,11],irrigation:true})
+db.stations.insertOne({name:"2",humidity:[10,33,22,11],irrigation:true})
+db.stations.insertOne({name:"3",humidity:[10,33,22,11],irrigation:true})
+db.stations.find().pretty()
+db.stations.insertOne({name:"3",irrigation:true,humidity:[10,33,22,11]})
+db.stations.deleteMany({})
+ls
+use dashboard
+db.stations.insertOne({name:"1",irrigation:true,humidity:[10,31,33,10]})
+db.stations.insertOne({name:"2",irrigation:true,humidity:[10,31,33,10]})
+db.stations.insertOne({name:"3",irrigation:true,humidity:[10,31,33,10]})
+db.stations.deleteMany({})
+db.stations.insertOne({name:"1",irrigation:true,humidity:[10,31,33,10]})
+db.stations.insertOne({name:"3",irrigation:true,humidity:[10,31,33,10]})
+db.stations.insertOne({name:"2",irrigation:true,humidity:[2,2,2,2]})
+use dashboard
+db.stations.find().pretty()
+use dashboard
+db.stations.find().pretty()
+db.stations.deleteMany({})
+db.stations.insertOne({name:"1",irrigation:true,humidity:[23,34,33,40]})
+db.stations.insertOne({name:"2",irrigation:true,humidity:[23,34,33,40]})
+db.stations.insertOne({name:"3",irrigation:true,humidity:[23,34,33,40]})
+db.stations.find().pretty()
+use dashboard
+db.stations.find().pretty()
+use dashboard
+show collections
+db.users.find().pretty()
+db.users.updateOne({fullName: "Admin},{$set:{adm:true}})
+db.users.updateOne({fullName: "Admin"},{$set:{adm:true}})
+db.users.find().pretty()
+use dashboard
+db.users.find().pretty()
+db.users.updateOne({fullName: "Ensley"},{$set:{adm:false}})
+db.users.find().pretty()
+db.users.deleteOne({_id:"5bc8f004064841049daa77a7"})
+db.users.find().pretty()
+db.users.deleteOne({_id:ObjectId("5bc8f004064841049daa77a7")})
+db.users.find().pretty()
+db.users.updateOne({fullName: "Everton Morais"},{$set:{adm:false}})
+db.users.find().pretty()
+db.users.updateOne({fullName: "Everton Morais"},{$set:{adm:true}})
+db.users.updateOne({fullName: "Amanda"},{$set:{adm:true}})
+db.users.find().pretty()
+db.users.deleteOne({_id:ObjectId("5bc9df42064841049daa77b8")})
+db.users.deleteOne({_id:ObjectId("5bc4dcba2d28ab05a8def13e")})
+db.users.find().pretty()
+db.users.deleteOne({_id:ObjectId("5bc4b495c5749805577d67bf")})
+db.users.find()
+db.users.deleteOne({_id:ObjectId("5bc4d45dc5749805577d67c0")})
+db.users.find()
+db.users.find().pretty()
+db.users.deleteOne({_id:ObjectId("5bc4e0dc371546049eae80b4")})
+db.users.deleteOne({_id:ObjectId("5bc4dda92d28ab05a8def13f")})
+db.users.find().pretty()
+db.users.deleteOne({_id:ObjectId("5bc4df2c2d28ab05a8def14b")})
+db.users.find().pretty()
+db.users.updateOne({fullName: "Thiago Bueno"},{$set:{adm:true}})
+db.users.find().pretty()
+db.users.find().pretty()
+use dashboard
+db.users.find().pretty()
+ls
+use dashboard
+db.users.find().pretty()
+use dashboard
+ls
+db.users.find().pretty()
+;
+use dashboard
+db.users.find().pretty()
+db.users.updateOne({email:"luciano@inatel.br"},{$set:{adm:true}})
+db.users.find().pretty()
+show dbs
+use dashboard
+show collections
+db.users.find().pretty()
+db.users.updateOne({email:karine.costa@mtel.inatel.br},{$set: {adm:true}})
+db.users.updateOne({email:"karine.costa@mtel.inatel.br"},{$set: {adm:true}})
+db.users.find().pretty()
