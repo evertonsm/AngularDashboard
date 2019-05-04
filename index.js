@@ -60,7 +60,7 @@ app.use(bodyparser.json());
 app.listen ( port ,() => { 
   console .log ( `Servidor rodando em http://${ip}:${port}`);
   console .log ( 'Para fechar: Ctrl + c' ); 
-}).timeout = 1000;
+}).timeout = 100000;
 
 app.use('/user', userController);  
 app.use('/trigger', triggerController);
@@ -81,7 +81,7 @@ app.post('/', function(req, res){
     json  = JSON.parse(json)
     console.log("INDEX POST = " + json.bomba);
 
-    res.send('{ bomba : [L,D,D]}');
+    res.send('{ bomba : [D,D,D]}');
 
 
   });

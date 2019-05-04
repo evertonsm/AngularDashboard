@@ -13,17 +13,23 @@
     </div>
   </nb-card-header>
   <nb-card-body>
-    <div class="cameras single-view" *ngIf="isSingleView">
+	<!--<video id="video" src="http://131.221.243.115:14000/feed.webm" autoplay="autoplay">
+	</video>-->    
+  	<div class="cameras single-view" *ngIf="isSingleView">
       <!--<div class="camera" [style.background-image]="'url(' + selectedCamera.source + ')'">
         <span>{{ selectedCamera.title }}</span>
       </div>-->
       
       <video id="videoPlayer" controls autoplay>
-        <source src="http://192.168.1.239:8080/camera.ogg" type="video/ogg" />      
+        <source src="http://131.221.243.115:14000/feed.webm" type="video/webm" />      
       </video>
     </div>
     <div class="cameras" *ngIf="!isSingleView">
-      <div class="camera col-sm-6" *ngFor="let camera of cameras" [style.background-image]="'url(' + camera.source + ')'"
+      <!--<div class="camera col-sm-6" *ngFor="let camera of cameras" [style.background-image]="'url(' + camera.source + ')'"
+           (click)="selectCamera(camera)">
+        <span>{{ camera.title }}</span>
+      </div>-->
+	<div class="camera col-12 .col-sm-6 .col-md-8" *ngFor="let camera of cameras" [style.background-image]="'url(' + camera.source + ')'"
            (click)="selectCamera(camera)">
         <span>{{ camera.title }}</span>
       </div>

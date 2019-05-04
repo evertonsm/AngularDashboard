@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
         irrigation: req.body.irrigation,
         humidity: req.body.humidity
     });
-
+    console.log('\nRequisição do Dashboard recebida -- Processando...');
     //st.save((err, doc) => {
     //    if (!err) { console.log("Botão inserido no Banco"); }
     //    else { console.log('Error in Stattion Save:' + JSON.stringify(err, undefined, 2)); }
@@ -53,13 +53,16 @@ router.post('/', (req, res) => {
         //
         dbo.collection("stations").findOne({ name: req.body.name }, function (err, result) {
             if (err) throw err;
-            console.log('Resultado da busca = ' + result._id);
+            //console.log('Resultado da busca = ' + result._id);
 
             dbo.collection("stations").updateOne({ _id: result._id }, { $set: { irrigation: req.body.irrigation } },
                 function (err, result) {
                     if (err) throw err;
-
-                    console.log('Deu certo a atualização!');
+					console.log('Canteiro ' + req.body.name +': POST');
+                    
+					console.log('Data: ' + new Date());
+					console.log('Irrigação: ' + req.body.irrigation);
+					console.log('Sensores: ' + req.body.humidity);
                 });
         });
 

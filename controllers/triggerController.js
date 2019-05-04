@@ -8,6 +8,12 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
+var count1 = 0;
+var count2 = 0;
+var count3 = 0;
+var block1 = false;
+var block2  = false;
+var block3 = false;
 // => 131.221.243.115:14002/trigger/
 /*
 router.get('/', (req,res) => {
@@ -55,11 +61,13 @@ router.post('/', (req, res) => {
     var aux = input;
     input = input.substr(2, input.length - 7)
     var estado_bomba = aux.substring(58, 65);
+    
 
     input = input.replace(/\\/g, '');
 
     input = JSON.parse(input)
-
+    console.log('\n####### Requisição da horta ' + input.name + ' recebida -- Processando...');
+	console.log(input.bomba);
     var estado = true;
 
     if(input.bomba == "Desligado") estado = false;
@@ -69,13 +77,13 @@ router.post('/', (req, res) => {
         var json = { "bomba": ["D", "D", "D"] };
         res.send(json);
     }
+	
     else {
-
 
         MongoClient.connect(url, function (err, db) {
             if (err) throw err;
             var dbo = db.db("dashboard");
-
+					
             var st2 = new Station({
                 name: input.name,
                 aDate: new Date(),
@@ -83,15 +91,20 @@ router.post('/', (req, res) => {
                 irrigation: estado,
             });
 
-            console.log('Umidade'+input.humidity)
+            //console.log('Umidade'+input.humidity)
 
-            dbo.collection("stations").updateOne({ name: input.name  }, { $set: { humidity: input.humidity } },
-                function (err, result) {
-                    if (err) throw err;
-
-                    console.log('Deu certo a atualização do Bueno!');
-                });
-
+			dbo.collection("stations").updateOne({ name: input.name  }, { $set: { humidity: input.humidity} },
+                	function (err, result) {
+                    	if (err) throw err;
+						
+						console.log('Atualizando informações!');
+						console.log('Canteiro '+ input.name);
+						console.log('Data: ' + new Date());
+						console.log('Irrigação: ' + estado);					
+						console.log('Sensores: ' + input.humidity);
+					
+            });
+			
             /*
             dbo.collection("stations").updateOne(
                 { name: st.name },
@@ -107,7 +120,7 @@ router.post('/', (req, res) => {
             dbo.collection("stations").find().toArray(function (err, result) {
                 if (err) throw err;
 
-                console.log('Busca feita com sucesso!')
+                console.log('Buscando estado das bombas no Banco de dados!')
 
                 this.stations = result;
                 console.log('Bomba = '+this.stations[0].name+', Status = '+this.stations[0].irrigation)
@@ -164,7 +177,7 @@ router.post('/', (req, res) => {
                 // mandar para o bueno o JSON
                 db.close();
                 res.send(JSON.stringify(json));
-                console.log('RESP para o BUENO = '+json.bomba)
+                console.log('Resposta enviada = '+json.bomba)
                 
 
             });
