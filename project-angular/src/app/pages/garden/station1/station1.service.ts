@@ -62,7 +62,7 @@ export class Station1Service {
 
       data => {
 
-        alert('Estado da bomba = ' + station2.irrigation);
+        //alert('Estado da bomba = ' + station2.irrigation);
 
       },
 

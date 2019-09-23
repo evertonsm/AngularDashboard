@@ -113,7 +113,7 @@ export class ChartjsBarHorizontalComponent implements OnDestroy, OnChanges, OnIn
       this.data = {
         labels: ['Umidade'],
         datasets: [{
-            label: 'Porcentagem média de umidade',
+            label: 'Média',
             
             backgroundColor: "#00f9a6",
             //backgroundColor: colors.infoLight,

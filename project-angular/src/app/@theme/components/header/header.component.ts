@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.chave = this.guard.getChave();
-    console.log(this.chave);
+    //console.log(this.chave);
     this.http.get('http://131.221.243.115:14002/user/me', { headers: { 'x-access-token': this.chave } })
       .subscribe((data: User) => {
         this.users = data;

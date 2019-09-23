@@ -25,7 +25,9 @@ const ip = '131.221.243.115'
 
 //app.use(cors())
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+ 
+res.header("Access-Control-Allow-Origin", "*");
+  
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers,X-Requested-With, Content-Type, Accept, X-Access-Token");
@@ -69,22 +71,21 @@ app.use('/stations', stationController);
 //app.use('/video', videoController);
 
 app.get('/', function(req, res){
-    res.send('Get Ola Mundo');
-    console.log("GET");
+//    res.send('Get Ola Mundo');
+//    console.log("GET");
   });
 
 app.post('/', function(req, res){
-    var json = JSON.stringify(req.body)
-    json = json.substr(2,json.length -7)
-    json = json.replace(/\\/g, '');
+//    var json = JSON.stringify(req.body)
+//    json = json.substr(2,json.length -7)
+//    json = json.replace(/\\/g, '');
 
-    json  = JSON.parse(json)
-    console.log("INDEX POST = " + json.bomba);
+//    json  = JSON.parse(json)
+//    console.log("INDEX POST = " + json.bomba);
 
-    res.send('{ bomba : [L,D,D]}');
+//   res.send('{ bomba : [D,D,D]}');
 
-
-  });
+});
 
 
 

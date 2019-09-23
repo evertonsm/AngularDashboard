@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: NbAuthService, private router: Router) {
     
     this.authService.logout("email").subscribe((result: NbAuthResult) =>{
-      console.log(result.isSuccess());
+      //console.log(result.isSuccess());
     })
     
 
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
           if (!authenticated) {
             this.router.navigate(['auth/login']);
           }
-          console.log("Authenticated: " + authenticated);
+          //console.log("Authenticated: " + authenticated);
         }),
       );
   }

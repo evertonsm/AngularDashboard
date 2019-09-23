@@ -41,7 +41,7 @@ export class Station2Service {
 
             data => {
 
-                alert('Estado da bomba alterado!');
+                //alert('Estado da bomba alterado!');
 
             },
 

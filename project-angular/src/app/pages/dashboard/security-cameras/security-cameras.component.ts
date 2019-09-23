@@ -8,11 +8,14 @@ import { Component } from '@angular/core';
 export class SecurityCamerasComponent {
 
   cameras: any[] = [{
-    title: 'Camera #1',
+    title: 'Camera #1 - 5G',
     source: 'assets/images/camera1.jpg',
-  }, {
-    title: 'Camera #2',
+    cam1: true,
+    
+  },{
+    title: 'Camera #2 - Padrão',
     source: 'assets/images/camera2.jpg',
+    cam1: false,  
   },];
 
   selectedCamera: any = this.cameras[0];
@@ -24,12 +27,12 @@ export class SecurityCamerasComponent {
   }];
 
   isSingleView = false;
-
   static userIsAdm = true;
   
   selectCamera(camera: any) {
     this.selectedCamera = camera;
     this.isSingleView = true;
+
   }
 
   getUserAdm(): boolean

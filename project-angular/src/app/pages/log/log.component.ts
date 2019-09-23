@@ -40,10 +40,12 @@ export class LogComponent implements OnInit {
     this.dao = this.stationService;
     this.start()
 
+    this.updateLog()
+
     this.toasterService = toasterService;
 
     setInterval(() => {
-      this.updateLog()}, 20000);
+      this.updateLog()}, 5000);
 
   }
 
@@ -55,10 +57,6 @@ export class LogComponent implements OnInit {
 
     this.station_1.irrigation = this.station_2.irrigation = this.station_3.irrigation = false;
     this.station_1.humidity = this.station_2.humidity = this.station_3.humidity = [0, 0, 0, 0];
-
-    setInterval(() => {
-      this.updateLog()
-    }, 20000);
   }
 
 
@@ -78,7 +76,7 @@ export class LogComponent implements OnInit {
       this.station_3.irrigation = this.stations[0].irrigation;
       this.station_3.humidity = this.stations[0].humidity;
     });
-    alert("Dados atualizados com sucesso!")
+    //alert("Dados atualizados com sucesso!")
     //this.showToastInformations()
   }
   ngOnInit() {

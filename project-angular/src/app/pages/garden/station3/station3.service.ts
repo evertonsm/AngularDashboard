@@ -46,7 +46,7 @@ export class Station3Service {
 
       data => {
 
-        alert('Estado da bomba = ' + station2.irrigation);
+        //alert('Estado da bomba = ' + station2.irrigation);
 
       },
 

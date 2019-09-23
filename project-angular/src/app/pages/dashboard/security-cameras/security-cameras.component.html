@@ -1,4 +1,4 @@
-<nb-card size="large"  *ngIf="getUserAdm()">
+<nb-card size="large">
   <nb-card-header>
     <div class="cameras-card-header">
       <span class="cameras-card-title">Câmera de Segurança</span>
@@ -14,14 +14,22 @@
   </nb-card-header>
   <nb-card-body>
     <div class="cameras single-view" *ngIf="isSingleView">
-      <!--<div class="camera" [style.background-image]="'url(' + selectedCamera.source + ')'">
-        <span>{{ selectedCamera.title }}</span>
-      </div>-->
-      
-      <video id="videoPlayer" controls autoplay>
-        <source src="http://192.168.1.239:8080/camera.ogg" type="video/ogg" />      
-      </video>
-    </div>
+    	
+	<div *ngIf="selectedCamera.cam1; else cam2">
+		<video id="videoPlayer" autoplay>
+        		<source src="http://131.221.243.115:14000/feed.webm" type="video/webm" />      
+      		</video>	
+	</div>
+	
+	<ng-template #cam2>
+             
+		<video id="videoPlayer" autoplay>
+                        <source src="http://131.221.243.115:14000/feed2.webm" type="video/webm" />
+                </video>
+	     
+        </ng-template>	      
+   </div>
+    
     <div class="cameras" *ngIf="!isSingleView">
       <div class="camera col-sm-6" *ngFor="let camera of cameras" [style.background-image]="'url(' + camera.source + ')'"
            (click)="selectCamera(camera)">
